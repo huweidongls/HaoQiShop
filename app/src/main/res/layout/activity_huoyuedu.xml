@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_ffffff"
+    tools:context="com.jingna.artworkmall.page.HuoyueduActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_white">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_white" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="活跃度"
+            style="@style/tv_top_title_white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="#F5F5F5"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black_333333"
+            android:textSize="16sp"
+            android:text="当前活跃度"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_dangqian"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_333333"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

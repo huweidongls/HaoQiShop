@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@color/white_ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.jingna.artworkmall.widget.RoundImageView
+            android:id="@+id/iv"
+            app:left_top_radius="8dp"
+            app:right_top_radius="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/img0063x"
+            android:layout_width="match_parent"
+            android:layout_height="155dp" />
+
+        <TextView
+            android:lines="1"
+            android:ellipsize="end"
+            android:id="@+id/tv_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black_333333"
+            android:textSize="15sp"
+            android:text="富贵神仙 雷东"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:lines="1"
+            android:ellipsize="end"
+            android:id="@+id/tv_sub"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#878787"
+            android:textSize="13sp"
+            android:text="富贵神仙 雷东"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/price_red"
+                android:layout_width="13dp"
+                android:layout_height="13dp" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="1dp"
+                android:id="@+id/tv_price"
+                android:textColor="#A02630"
+                android:textSize="15sp"
+                android:text="1500.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/ll"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="1dp"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:text="市场价"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/price_gray"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_shichang"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="1dp"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:text="1630.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginRight="-5dp"
+                android:layout_marginLeft="-5dp"
+                android:layout_alignLeft="@+id/ll"
+                android:layout_alignRight="@+id/ll"
+                android:layout_centerVertical="true"
+                android:background="#979797"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

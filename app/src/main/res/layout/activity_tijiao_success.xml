@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_ffffff"
+    tools:context="com.jingna.artworkmall.page.TijiaoSuccessActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_white">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_white" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="支付成功"
+            style="@style/tv_top_title_white" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:src="@mipmap/zhifuchenggong"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="21dp"
+        android:textColor="#A02630"
+        android:textSize="17sp"
+        android:text="支付成功"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="13dp"
+        android:textColor="#9C9C9C"
+        android:textSize="13sp"
+        android:text="您已完成支付"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="1dp"
+        android:textColor="#9C9C9C"
+        android:textSize="13sp"
+        android:text="谢谢您对石榴树的支持！"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:background="@drawable/bg_a02630_18dp_bord"
+        android:gravity="center"
+        android:textColor="#A02630"
+        android:textSize="13sp"
+        android:text="查看订单"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginLeft="121dp"
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+</LinearLayout>

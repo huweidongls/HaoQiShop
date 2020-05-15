@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_ffffff"
+    tools:context="com.jingna.artworkmall.page.BanquanActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_gray">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_gray" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="版本说明"
+            style="@style/tv_top_title_gray" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

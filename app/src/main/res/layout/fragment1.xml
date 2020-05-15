@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--<com.jingna.artworkmall.widget.StatusBarHeightView-->
+        <!--android:orientation="vertical"-->
+        <!--app:use_type="use_padding_top"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <RelativeLayout
+            style="@style/rl_top_bar">
+
+            <TextView
+                android:text="石榴树"
+                style="@style/tv_top_title" />
+
+        </RelativeLayout>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_gonggao"
+                        android:background="@color/white_ffffff"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="17dp"
+                            android:src="@mipmap/gonggao"
+                            android:layout_width="17dp"
+                            android:layout_height="13dp" />
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:textColor="#777777"
+                            android:textSize="15sp"
+                            android:text="公告："
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <com.jingna.artworkmall.widget.ScrollTextView
+                            android:id="@+id/tv_scroll"
+                            android:layout_marginRight="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black_333333"
+                            android:textSize="14sp"
+                            android:text="我的绘画历程"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:background="@color/white_ffffff"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="82dp">
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_gravity="bottom"
+                                    android:src="@mipmap/index1"
+                                    android:layout_width="24dp"
+                                    android:layout_height="29dp" />
+
+                                <LinearLayout
+                                    android:layout_marginLeft="9dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:textColor="#727272"
+                                        android:textSize="12sp"
+                                        android:text="安全"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <TextView
+                                        android:layout_marginTop="2dp"
+                                        android:textColor="#333333"
+                                        android:textSize="14sp"
+                                        android:text="无创伤"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/line"
+                            android:layout_width="1dp"
+                            android:layout_height="33dp"/>
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_gravity="bottom"
+                                    android:src="@mipmap/index2"
+                                    android:layout_width="29dp"
+                                    android:layout_height="29dp" />
+
+                                <LinearLayout
+                                    android:layout_marginLeft="9dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:textColor="#727272"
+                                        android:textSize="12sp"
+                                        android:text="国际领先"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <TextView
+                                        android:layout_marginTop="2dp"
+                                        android:textColor="#333333"
+                                        android:textSize="14sp"
+                                        android:text="快速有效"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/line"
+                            android:layout_width="1dp"
+                            android:layout_height="33dp"/>
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_gravity="bottom"
+                                    android:src="@mipmap/index3"
+                                    android:layout_width="26dp"
+                                    android:layout_height="29dp" />
+
+                                <LinearLayout
+                                    android:layout_marginLeft="9dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:textColor="#727272"
+                                        android:textSize="12sp"
+                                        android:text="AI"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <TextView
+                                        android:layout_marginTop="2dp"
+                                        android:textColor="#333333"
+                                        android:textSize="14sp"
+                                        android:text="人工智能"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/vp"
+                        android:layout_width="match_parent"
+                        android:layout_height="122dp"
+                        android:clipToPadding="false"
+                        android:overScrollMode="never" />
+
+                    <RelativeLayout
+                        android:layout_marginBottom="20dp"
+                        android:descendantFocusability="blocksDescendants"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_ffffff_8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <!--</com.jingna.artworkmall.widget.StatusBarHeightView>-->
+
+</LinearLayout>

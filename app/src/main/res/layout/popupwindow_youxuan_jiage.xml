@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white_ffffff">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:paddingLeft="25dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black_333333"
+        android:textSize="15sp"
+        android:text="价格升序"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <View
+        android:background="@color/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:paddingLeft="25dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black_333333"
+        android:textSize="15sp"
+        android:text="价格降序"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    tools:context="com.jingna.artworkmall.page.AboutActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_gray">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_gray" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="关于我们"
+            style="@style/tv_top_title_gray" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<TextView-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:textColor="#767676"-->
+        <!--android:textSize="10sp"-->
+        <!--android:text="Copyright@2019-2022"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<TextView-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:textColor="#767676"-->
+        <!--android:textSize="10sp"-->
+        <!--android:text="哈尔滨精纳科技有限公司版权所有"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:visibility="gone"-->
+        <!--android:id="@+id/vp"-->
+        <!--android:layout_marginLeft="50dp"-->
+        <!--android:layout_marginRight="50dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="122dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:clipChildren="false" />-->
+
+</LinearLayout>

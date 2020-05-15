@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_ffffff"
+    tools:context="com.jingna.artworkmall.page.InsertAddressActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            style="@style/rl_top_bar_white">
+
+            <RelativeLayout
+                android:id="@+id/rl_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    style="@style/iv_top_back_white" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:text="新建收货人"
+                style="@style/tv_top_title_white" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:textColor="#545454"
+                android:textSize="14sp"
+                android:text="收货人"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.jingna.artworkmall.widget.EditTextWithDel
+                android:id="@+id/et_name"
+                android:textColor="@color/black_333333"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="27dp"
+                android:textSize="14sp"
+                android:hint="请填写收货人姓名"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:textColor="#545454"
+                android:textSize="14sp"
+                android:text="身份证号"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.jingna.artworkmall.widget.EditTextWithDel
+                android:id="@+id/et_id_num"
+                android:inputType="number"
+                android:textColor="@color/black_333333"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13dp"
+                android:textSize="14sp"
+                android:hint="请填写收货人身份证号"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:textColor="#545454"
+                android:textSize="14sp"
+                android:text="手机号码"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.jingna.artworkmall.widget.EditTextWithDel
+                android:id="@+id/et_phonenum"
+                android:inputType="number"
+                android:textColor="@color/black_333333"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13dp"
+                android:textSize="14sp"
+                android:hint="请填写收货人手机号"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_city"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:textColor="#545454"
+                android:textSize="14sp"
+                android:text="所在地区"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:textColor="@color/black_333333"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13dp"
+                android:textSize="14sp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="85dp">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#545454"
+                android:textSize="14sp"
+                android:text="详细地址"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.jingna.artworkmall.widget.EditTextWithDel
+                android:id="@+id/et_address"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/black_333333"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="13dp"
+                android:textSize="14sp"
+                android:hint="街道、楼牌号等"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="52dp">-->
+
+            <!--<TextView-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:textColor="#545454"-->
+                <!--android:textSize="14sp"-->
+                <!--android:text="邮编"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<com.jingna.artworkmall.widget.EditTextWithDel-->
+                <!--android:id="@+id/et_zip_code"-->
+                <!--android:inputType="number"-->
+                <!--android:textColor="@color/black_333333"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_marginLeft="13dp"-->
+                <!--android:textSize="14sp"-->
+                <!--android:hint="请填写邮编"-->
+                <!--android:background="@null"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:background="#EBEBEB"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"/>-->
+
+        <RelativeLayout
+            android:id="@+id/rl_moren"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="36dp"
+                android:layout_toLeftOf="@+id/iv_set"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="#4A4A4A"
+                    android:textSize="14sp"
+                    android:text="设置默认地址"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textColor="#4A4A4A"
+                    android:textSize="11sp"
+                    android:text="提醒：每次下单时会使用该地址，实际下单地址会根据您购物切换的地区进行智能智能判断，请在下单时确认哦！"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:src="@mipmap/address_off"
+                android:id="@+id/iv_set"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="50dp"
+                android:layout_height="25dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:background="@drawable/bg_a02630_20dp"
+        android:textColor="@color/white_ffffff"
+        android:text="保存"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</RelativeLayout>

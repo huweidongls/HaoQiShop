@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jingna.artworkmall">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- 自动对焦功能 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 调用前置摄像头功能 -->
+    <uses-feature android:name="android.hardware.camera.front" />
+
+    <application
+        android:name=".app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".page.MainActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <receiver android:name=".broadcastreceiver.NetBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".page.AddressActivity" />
+        <activity android:name=".page.InsertAddressActivity" />
+        <activity android:name=".page.PtJifenActivity" />
+        <activity android:name=".page.PtJifenDetailsActivity" />
+        <activity android:name=".page.JifenOrderActivity" />
+        <activity android:name=".page.JifenOrderDetailsActivity" />
+        <activity android:name=".page.MyBankCardActivity" />
+        <activity android:name=".page.InsertBankCardActivity" />
+        <activity android:name=".page.InsertBankCardSuccessActivity" />
+        <activity android:name=".page.CommissionActivity" />
+        <activity android:name=".page.LoginActivity" />
+        <activity android:name=".page.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".page.RegisterActivity" />
+        <activity android:name=".page.PhoneLoginActivity" />
+        <activity android:name=".page.PersonInformationActivity" />
+        <activity
+            android:name="com.donkingliang.imageselector.ImageSelectorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.donkingliang.imageselector.PreviewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.donkingliang.imageselector.ClipImageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- Android 7.0 文件共享配置，必须配置 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".page.ForgotPwdActivity" />
+        <activity android:name=".page.ForgotPwd2Activity" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".page.MyDianpuActivity" />
+        <activity android:name=".page.CouponsActivity" />
+        <activity android:name=".page.TijianDetailsActivity" />
+        <activity android:name=".page.TijianSureActivity" />
+        <activity android:name=".page.TijianOrderActivity" />
+        <activity android:name=".page.TijianOrderDetailsActivity" />
+        <activity android:name=".page.AboutActivity" />
+        <activity android:name=".page.BanquanActivity" />
+        <activity android:name=".page.YinsiActivity" />
+        <activity android:name=".page.Register2Activity" />
+        <activity android:name=".page.FenleiActivity" />
+        <activity android:name=".page.JifenDetailsActivity" />
+        <activity android:name=".page.ChongzhiActivity" />
+        <activity android:name=".page.YqmActivity" />
+        <activity android:name=".page.InsertZfbActivity" />
+        <activity android:name=".page.TijiaoSuccessActivity" />
+        <activity android:name=".page.HuoyueduActivity" />
+        <activity android:name=".page.FxDetailsActivity" />
+        <activity android:name=".page.GonggaoListActivity" />
+        <activity android:name=".page.GonggaoDetailsActivity" />
+        <activity android:name=".page.TijiaoCouponsActivity"></activity>
+    </application>
+
+</manifest>

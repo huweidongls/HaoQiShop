@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_yishiyong"
+        android:visibility="gone"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_ffffff_4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_yi_title"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="17dp"
+                android:textColor="@color/black_333333"
+                android:textSize="14sp"
+                android:text="成人高端-升级肠癌筛查（女）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_yi_name"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="联系人 李四"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_yi_phone"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="手机号 123****4567"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_yi_idnum"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="身份证 123************4567"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/tv_yi_price"
+                android:gravity="center_vertical|end"
+                android:paddingRight="20dp"
+                android:textColor="@color/black_333333"
+                android:textSize="13sp"
+                android:text="合计 1500.00"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_daishiyong"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_ffffff_4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="17dp"
+                android:textColor="@color/black_333333"
+                android:textSize="14sp"
+                android:text="成人高端-升级肠癌筛查（女）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/black_333333"
+                android:textSize="15sp"
+                android:text="订单二维码"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_code"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:src="#979797"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:id="@+id/tv_electronic_code"
+                android:background="@drawable/bg_bcbcbc_3dp_bord"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingLeft="46dp"
+                android:paddingRight="46dp"
+                android:textColor="@color/black_333333"
+                android:textSize="16sp"
+                android:text="2019 1027 1234 0987"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+
+            <View
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="联系人 李四"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="手机号 123****4567"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_idnum"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:textColor="#646464"
+                android:textSize="13sp"
+                android:text="身份证 123************4567"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:gravity="center_vertical|end"
+                android:paddingRight="20dp"
+                android:textColor="@color/black_333333"
+                android:textSize="13sp"
+                android:text="合计 1500.00"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

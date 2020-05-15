@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_ffffff_4dp">
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="end"
+        android:src="@mipmap/guanbi"
+        android:layout_width="18dp"
+        android:layout_height="18dp" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#2C3135"
+        android:textSize="13sp"
+        android:text="2019年12月"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/rv"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

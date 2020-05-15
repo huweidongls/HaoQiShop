@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="张三"
+                android:id="@+id/tv_name"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black_333333"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="13333333333"
+                android:id="@+id/tv_phonenum"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:layout_marginLeft="42dp"
+                android:textSize="15sp"
+                android:textColor="@color/black_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+            <TextView
+                android:paddingRight="7dp"
+                android:paddingLeft="7dp"
+                android:visibility="visible"
+                android:id="@+id/tv_moren"
+                android:layout_marginLeft="4dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/bg_a02630_7dp"
+                android:textColor="@color/white_ffffff"
+                android:textSize="10sp"
+                android:text="默认"
+                android:layout_width="wrap_content"
+                android:layout_height="14dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="黑龙江哈尔滨市南岗区汉广街41号409室"
+            android:id="@+id/tv_address"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:textColor="#2D2D2D"
+            android:textSize="12sp"
+            android:layout_below="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:src="@mipmap/bianji_address"
+            android:layout_marginTop="43dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="14dp"
+            android:layout_height="14dp" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:background="#EBEBEB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

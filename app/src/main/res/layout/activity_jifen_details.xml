@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jingna.artworkmall.page.JifenDetailsActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_gray">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_gray" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="详情"
+            style="@style/tv_top_title_gray" />
+
+    </RelativeLayout>
+
+    <!--<ScrollView-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+
+
+        <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
+
+    <ProgressBar
+        android:id="@+id/pro"
+        android:progress="0"
+        android:max="100"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </WebView>
+
+    <LinearLayout
+        android:elevation="2dp"
+        android:background="@color/white_ffffff"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"
+                android:textColor="#A02630"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:gravity="center"
+            android:background="#A02630"
+            android:textColor="@color/white_ffffff"
+            android:textSize="18sp"
+            android:text="下一步"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

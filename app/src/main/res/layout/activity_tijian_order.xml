@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line"
+    android:orientation="vertical"
+    tools:context="com.jingna.artworkmall.page.TijianOrderActivity">
+
+    <RelativeLayout
+        style="@style/rl_top_bar_white">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                style="@style/iv_top_back_white" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="我的订单"
+            style="@style/tv_top_title_white" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:background="@color/white_ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:layout_centerHorizontal="true"
+            android:id="@+id/magic_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"/>
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
