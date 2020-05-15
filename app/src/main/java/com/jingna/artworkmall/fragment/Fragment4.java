@@ -99,7 +99,7 @@ public class Fragment4 extends BaseFragment {
                 for (IndexPageApifindBannerCategoryBean.DataBean b : bean.getData()){
                     list.add(NetUrl.BASE_URL+b.getAppPic());
                 }
-                init(banner, list);
+//                init(banner, list);
             }
         });
 

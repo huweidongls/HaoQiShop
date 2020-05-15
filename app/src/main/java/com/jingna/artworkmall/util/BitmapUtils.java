@@ -105,7 +105,7 @@ public class BitmapUtils {
         //draw fg into
         cv.drawBitmap(foreground, 2, 2, null);//在 0，0坐标开始画入fg ，可以从任意位置画入
         //save all clip
-        cv.save(Canvas.ALL_SAVE_FLAG);//保存
+        cv.save();//保存
         //store
         cv.restore();//存储
         return newbmp;
@@ -134,7 +134,7 @@ public class BitmapUtils {
         //draw fg into
         cv.drawBitmap(foreground, 20, bgHeight-20-fgHeight, null);//在 0，0坐标开始画入fg ，可以从任意位置画入
         //save all clip
-        cv.save(Canvas.ALL_SAVE_FLAG);//保存
+        cv.save();//保存
         //store
         cv.restore();//存储
         return newbmp;
@@ -163,7 +163,7 @@ public class BitmapUtils {
         //draw fg into
         cv.drawBitmap(foreground, bgWidth-20-fgWidth, 20, null);//在 0，0坐标开始画入fg ，可以从任意位置画入
         //save all clip
-        cv.save(Canvas.ALL_SAVE_FLAG);//保存
+        cv.save();//保存
         //store
         cv.restore();//存储
         return newbmp;
@@ -299,7 +299,7 @@ public class BitmapUtils {
         canvas.drawBitmap(background, 0, 0, null);
         canvas.drawBitmap(foreground, (bgWidth - fgWidth) / 2,
                 (bgHeight - fgHeight) / 3, null);
-        canvas.save(Canvas.ALL_SAVE_FLAG);
+        canvas.save();
         canvas.restore();
         return newmap;
     }

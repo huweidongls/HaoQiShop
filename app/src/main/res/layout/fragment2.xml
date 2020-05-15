@@ -30,9 +30,25 @@
                     app:layout_scrollFlags="scroll">
 
                     <com.youth.banner.Banner
+                        android:visibility="gone"
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
                         android:layout_height="175dp" />
+
+                    <com.stx.xhb.xbanner.XBanner
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/xbanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="175dp"
+                        app:AutoPlayTime="3000"
+                        app:pointsContainerBackground="#44aaaaaa"
+                        app:pointNormal="@drawable/bg_28c7c7_2dp"
+                        app:pointSelect="@drawable/bg_28c7c7_2dp"
+                        app:pointsPosition="RIGHT"
+                        app:tipTextSize="12sp"
+                        app:isShowNumberIndicator="true"
+                        app:isShowIndicatorOnlyOne="true"
+                        app:pageChangeDuration="800"/>
 
                 </LinearLayout>
 
