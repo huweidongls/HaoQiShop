@@ -2,130 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
+    android:layout_marginRight="6dp"
+    android:layout_marginLeft="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/img0063x"
-        android:layout_width="match_parent"
-        android:layout_height="170dp" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/black_333333"
-        android:textSize="16sp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:text="成人高端-升级肠癌筛查（女）"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tv_sub"
-        android:layout_marginRight="20dp"
-        android:textColor="#747474"
-        android:textSize="14sp"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="20dp"
-        android:text="副标题成人高端-升级肠癌筛查（女）"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="7dp"
-        android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_ffffff_3dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/price_red"
-            android:layout_width="18dp"
-            android:layout_height="18dp" />
+        <com.shehuan.niv.NiceImageView
+            app:corner_top_right_radius="3dp"
+            app:corner_top_left_radius="3dp"
+            android:id="@+id/iv"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/img0063x"
+            android:layout_width="match_parent"
+            android:layout_height="167dp" />
 
         <TextView
-            android:layout_marginLeft="5dp"
-            android:id="@+id/tv_price"
-            android:textColor="#A02630"
-            android:textSize="20sp"
-            android:text="1510.00"
+            android:id="@+id/tv_name"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black_333333"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:text="成人高端-升级肠癌筛查（女）"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <RelativeLayout
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="8dp"
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_sub"
+            android:layout_marginRight="20dp"
+            android:textColor="#747474"
+            android:textSize="14sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="20dp"
+            android:text="副标题成人高端-升级肠癌筛查（女）"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="7dp"
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_marginRight="5dp"
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/price_red"
+                android:layout_width="18dp"
+                android:layout_height="18dp" />
+
+            <TextView
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="5dp"
-                android:id="@+id/ll"
-                android:orientation="horizontal"
+                android:id="@+id/tv_price"
+                android:textColor="#A02630"
+                android:textSize="20sp"
+                android:text="1510.00"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="1dp"
-                    android:textColor="#8C8C8C"
-                    android:textSize="14sp"
-                    android:text="市场价"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/price_gray"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp" />
-
-                <TextView
-                    android:id="@+id/tv_shichang"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="1dp"
-                    android:textColor="#8C8C8C"
-                    android:textSize="14sp"
-                    android:text="1630.00"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_marginRight="-5dp"
-                android:layout_marginLeft="-5dp"
-                android:layout_alignLeft="@+id/ll"
-                android:layout_alignRight="@+id/ll"
-                android:layout_centerVertical="true"
-                android:background="#979797"
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"/>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:background="@color/line"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
 
 </LinearLayout>

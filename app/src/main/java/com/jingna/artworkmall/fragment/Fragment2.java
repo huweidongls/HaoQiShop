@@ -18,7 +18,6 @@ import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.adapter.GoodsDetailsViewpagerAdapter;
 import com.jingna.artworkmall.base.BaseFragment;
 import com.jingna.artworkmall.custom.ScaleTransitionPagerTitleView;
-import com.stx.xhb.xbanner.XBanner;
 import com.youth.banner.Banner;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -51,8 +50,6 @@ public class Fragment2 extends BaseFragment {
     ViewPager mViewPager;
     @BindView(R.id.banner)
     Banner banner;
-    @BindView(R.id.xbanner)
-    XBanner xBanner;
 
     @Nullable
     @Override

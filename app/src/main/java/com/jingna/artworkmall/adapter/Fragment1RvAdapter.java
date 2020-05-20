@@ -46,7 +46,6 @@ public class Fragment1RvAdapter extends RecyclerView.Adapter<Fragment1RvAdapter.
         holder.tvPrice.setText(StringUtils.roundByScale(data.get(position).getPrice(), 2));
         holder.tvName.setText(data.get(position).getGoodsName());
         holder.tvSub.setText(data.get(position).getDescription());
-        holder.tvShichang.setText(StringUtils.roundByScale(data.get(position).getOriginalPrice(), 2));
         if(data.get(position).getLabel() != null){
             String[] s = data.get(position).getLabel().split(",");
             LabelAdapter labelAdapter = new LabelAdapter(s);
@@ -78,7 +77,6 @@ public class Fragment1RvAdapter extends RecyclerView.Adapter<Fragment1RvAdapter.
         private TextView tvName;
         private RecyclerView rv;
         private TextView tvSub;
-        private TextView tvShichang;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -87,7 +85,6 @@ public class Fragment1RvAdapter extends RecyclerView.Adapter<Fragment1RvAdapter.
             tvName = itemView.findViewById(R.id.tv_name);
             rv = itemView.findViewById(R.id.rv);
             tvSub = itemView.findViewById(R.id.tv_sub);
-            tvShichang = itemView.findViewById(R.id.tv_shichang);
         }
     }
 
