@@ -31,7 +31,7 @@
             android:padding="8dp"
             app:tabIconNormal="@mipmap/footer_btn001"
             app:tabIconSelected="@mipmap/footer_btn001_red"
-            app:tabText="物视"
+            app:tabText="首页"
             app:tabTextSize="10sp"
             app:textColorNormal="#666666"
             app:textColorSelected="@color/theme" />
@@ -43,7 +43,7 @@
             android:padding="8dp"
             app:tabIconNormal="@mipmap/footer_btn002"
             app:tabIconSelected="@mipmap/footer_btn002_red"
-            app:tabText="消息"
+            app:tabText="预约"
             app:tabTextSize="10sp"
             app:textColorNormal="#666666"
             app:textColorSelected="@color/theme" />
@@ -55,7 +55,7 @@
             android:padding="8dp"
             app:tabIconNormal="@mipmap/footer_btn003"
             app:tabIconSelected="@mipmap/footer_btn003_red"
-            app:tabText="套餐"
+            app:tabText="发现"
             app:tabTextSize="10sp"
             app:textColorNormal="#666666"
             app:textColorSelected="@color/theme" />

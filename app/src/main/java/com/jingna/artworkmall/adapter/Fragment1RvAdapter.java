@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,8 @@ public class Fragment1RvAdapter extends RecyclerView.Adapter<Fragment1RvAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         GlideUtils.into(context, NetUrl.BASE_URL+data.get(position).getAppPic(), holder.iv);
-        holder.tvPrice.setText(StringUtils.roundByScale(data.get(position).getPrice(), 2));
+        String price = "<small>¥</small>"+StringUtils.roundByScale(data.get(position).getPrice(), 2);
+        holder.tvPrice.setText(Html.fromHtml(price));
         holder.tvName.setText(data.get(position).getGoodsName());
         holder.tvSub.setText(data.get(position).getDescription());
         if(data.get(position).getLabel() != null){

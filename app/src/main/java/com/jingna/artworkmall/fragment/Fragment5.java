@@ -21,10 +21,13 @@ import com.jingna.artworkmall.page.AboutActivity;
 import com.jingna.artworkmall.page.AddressActivity;
 import com.jingna.artworkmall.page.BanquanActivity;
 import com.jingna.artworkmall.page.CouponsActivity;
+import com.jingna.artworkmall.page.HuiyuanQuanyiActivity;
 import com.jingna.artworkmall.page.HuoyueduActivity;
 import com.jingna.artworkmall.page.JifenOrderActivity;
+import com.jingna.artworkmall.page.MessageActivity;
 import com.jingna.artworkmall.page.MyBankCardActivity;
 import com.jingna.artworkmall.page.MyDianpuActivity;
+import com.jingna.artworkmall.page.MyYuyueActivity;
 import com.jingna.artworkmall.page.PersonInformationActivity;
 import com.jingna.artworkmall.page.PtJifenActivity;
 import com.jingna.artworkmall.page.TijianOrderActivity;
@@ -117,10 +120,22 @@ public class Fragment5 extends BaseFragment {
 
     @OnClick({R.id.rl_address, R.id.ll_pt_jifen, R.id.rl_jifen_order, R.id.ll_head, R.id.rl_bank, R.id.rl_dianpu,
     R.id.ll_coupons, R.id.ll_qiandao, R.id.rl_all_order, R.id.rl_daishiyong, R.id.rl_yishiyong, R.id.rl_about,
-    R.id.rl_banquan, R.id.rl_yinsi, R.id.rl_huoyuedu})
+    R.id.rl_banquan, R.id.rl_yinsi, R.id.tv_huoyuedu, R.id.rl_msg, R.id.rl_yuyue, R.id.rl_quanyi})
     public void onClick(View view){
         Intent intent = new Intent();
         switch (view.getId()){
+            case R.id.rl_quanyi:
+                intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_yuyue:
+                intent.setClass(getContext(), MyYuyueActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_msg:
+                intent.setClass(getContext(), MessageActivity.class);
+                startActivity(intent);
+                break;
             case R.id.rl_address:
                 intent.setClass(getContext(), AddressActivity.class);
                 startActivity(intent);
@@ -211,7 +226,7 @@ public class Fragment5 extends BaseFragment {
                 intent.setClass(getContext(), YinsiActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.rl_huoyuedu:
+            case R.id.tv_huoyuedu:
                 intent.setClass(getContext(), HuoyueduActivity.class);
                 intent.putExtra("dangqian", dangqian);
                 startActivity(intent);
