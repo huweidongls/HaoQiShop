@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.text.SpannableString;
 
+import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.page.RegisterActivity;
 
 public class RegisterTimeCount extends CountDownTimer {
@@ -67,7 +68,7 @@ public class RegisterTimeCount extends CountDownTimer {
 //                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // 设置前景色为
 
         activity.getCode_btn().setText(msp);
-        activity.getCode_btn().setTextColor(Color.parseColor("#A02630"));
+        activity.getCode_btn().setTextColor(activity.getResources().getColor(R.color.theme));
         activity.getCode_btn().setEnabled(true);
         setTimeNum(60);
     }

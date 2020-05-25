@@ -126,13 +126,15 @@
         <activity android:name=".page.MessageActivity" />
         <activity android:name=".page.MyYuyueActivity" />
         <activity android:name=".page.HuiyuanQuanyiActivity" />
-        <activity android:name=".page.HuiyuanQuanyiDetailsActivity"/>
+        <activity android:name=".page.HuiyuanQuanyiDetailsActivity" />
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="4uebmp65DZDF4zv2vCb3wWgvC5HfWrSS" />
-        <!--<service android:name="com.baidu.location.f"-->
-        <!--android:enabled="true"-->
-        <!--android:process=":remote"/>-->
+        <!-- <service android:name="com.baidu.location.f" -->
+        <!-- android:enabled="true" -->
+        <!-- android:process=":remote"/> -->
+        <activity android:name=".page.YuyueDetailsActivity"></activity>
     </application>
 
 </manifest>

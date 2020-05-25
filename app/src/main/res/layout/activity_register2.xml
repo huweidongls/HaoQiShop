@@ -8,16 +8,28 @@
     android:background="@color/white_ffffff"
     tools:context="com.jingna.artworkmall.page.Register2Activity">
 
-    <RelativeLayout style="@style/rl_top_bar_white">
+    <RelativeLayout
+        android:background="@mipmap/login_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/rl_back"
             android:layout_width="50dp"
-            android:layout_height="match_parent">
+            android:layout_height="44dp">
 
-            <ImageView style="@style/iv_top_back_white" />
+            <ImageView style="@style/iv_top_back" />
 
         </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="14dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white_ffffff"
+            android:textSize="17sp"
+            android:text="注册"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
@@ -26,25 +38,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="30dp"
-            android:text="手机注册"
-            android:textColor="@color/black_333333"
-            android:textSize="31sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="9dp"
-            android:text="欢迎开启之旅"
-            android:textColor="#969696"
-            android:textSize="17sp" />
 
         <EditText
             android:visibility="gone"
@@ -143,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="《用户协议》"
-            android:textColor="#A02630"
+            android:textColor="@color/theme"
             android:textSize="11sp" />
 
         <TextView
@@ -157,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="《隐私政策》"
-            android:textColor="#A02630"
+            android:textColor="@color/theme"
             android:textSize="11sp" />
 
     </LinearLayout>
