@@ -1,6 +1,7 @@
 package com.jingna.artworkmall.fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.view.View;
 
 import com.baidu.location.BDLocation;
@@ -15,12 +16,14 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.LazyFragment;
+import com.jingna.artworkmall.page.SubmitYuyueActivity;
 import com.jingna.artworkmall.util.Logger;
 import com.vise.xsnow.permission.OnPermissionCallback;
 import com.vise.xsnow.permission.PermissionManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2020/5/20.
@@ -78,6 +81,17 @@ public class FragmentYy extends LazyFragment {
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
 
+    }
+
+    @OnClick({R.id.ll_yuyue})
+    public void onClick(View view){
+        Intent intent = new Intent();
+        switch (view.getId()){
+            case R.id.ll_yuyue:
+                intent.setClass(getContext(), SubmitYuyueActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     private void initLocation(){
