@@ -1,5 +1,6 @@
 package com.jingna.artworkmall.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.BaseFragment;
 import com.jingna.artworkmall.bean.AppMemberSignqueryListBean;
 import com.jingna.artworkmall.bean.MemUsergetByInformationBean;
+import com.jingna.artworkmall.bean.MemUsergetOneBean;
 import com.jingna.artworkmall.dialog.DialogCalendar;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.page.AboutActivity;
@@ -32,11 +34,13 @@ import com.jingna.artworkmall.page.PersonInformationActivity;
 import com.jingna.artworkmall.page.PtJifenActivity;
 import com.jingna.artworkmall.page.TijianOrderActivity;
 import com.jingna.artworkmall.page.YinsiActivity;
+import com.jingna.artworkmall.page.YqmActivity;
 import com.jingna.artworkmall.util.GlideUtils;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StringUtils;
 import com.jingna.artworkmall.util.ToastUtil;
 import com.jingna.artworkmall.util.ViseUtil;
+import com.jingna.artworkmall.util.WeiboDialogUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,6 +76,8 @@ public class Fragment5 extends BaseFragment {
     private int dangqian = 0;
 
     private Calendar c;
+
+    private Dialog dialog;
 
     @Nullable
     @Override
@@ -120,10 +126,26 @@ public class Fragment5 extends BaseFragment {
 
     @OnClick({R.id.rl_address, R.id.ll_pt_jifen, R.id.rl_jifen_order, R.id.ll_head, R.id.rl_bank, R.id.rl_dianpu,
     R.id.ll_coupons, R.id.ll_qiandao, R.id.rl_all_order, R.id.rl_daishiyong, R.id.rl_yishiyong, R.id.rl_about,
-    R.id.rl_banquan, R.id.rl_yinsi, R.id.tv_huoyuedu, R.id.rl_msg, R.id.rl_yuyue, R.id.rl_quanyi})
+    R.id.rl_banquan, R.id.rl_yinsi, R.id.tv_huoyuedu, R.id.rl_msg, R.id.rl_yuyue, R.id.rl_quanyi, R.id.rl_yqm})
     public void onClick(View view){
-        Intent intent = new Intent();
+        final Intent intent = new Intent();
         switch (view.getId()){
+            case R.id.rl_yqm:
+                dialog = WeiboDialogUtils.createLoadingDialog(getContext(), "请等待...");
+                Map<String, String> map = new LinkedHashMap<>();
+                map.put("id", SpUtils.getUserId(getContext()));
+                ViseUtil.Get(getContext(), NetUrl.MemUsergetOne, map, dialog, new ViseUtil.ViseListener() {
+                    @Override
+                    public void onReturn(String s) {
+                        Gson gson = new Gson();
+                        MemUsergetOneBean bean = gson.fromJson(s, MemUsergetOneBean.class);
+                        intent.setClass(getContext(), YqmActivity.class);
+                        intent.putExtra("code", bean.getData().getMemberUserInfo().getInvitationCode());
+                        intent.putExtra("url", bean.getData().getMemberUserInfo().getLoginUrl());
+                        startActivity(intent);
+                    }
+                });
+                break;
             case R.id.rl_quanyi:
                 intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
                 startActivity(intent);

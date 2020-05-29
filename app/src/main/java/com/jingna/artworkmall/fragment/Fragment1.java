@@ -24,15 +24,20 @@ import com.jingna.artworkmall.card.CardFxPagerAdapter;
 import com.jingna.artworkmall.card.ShadowTransformer;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.page.GonggaoListActivity;
+import com.jingna.artworkmall.page.YouxuanShopActivity;
 import com.jingna.artworkmall.util.Logger;
+import com.jingna.artworkmall.util.ToastUtil;
 import com.jingna.artworkmall.util.ViseUtil;
 import com.jingna.artworkmall.widget.ScrollTextView;
+import com.jingna.artworkmall.widget.ScrollTextView1;
 import com.jingna.artworkmall.widget.ViewPagerAdapter;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -60,6 +65,8 @@ public class Fragment1 extends BaseFragment {
     SmartRefreshLayout smartRefreshLayout;
     @BindView(R.id.tv_scroll)
     ScrollTextView tvScroll;
+    @BindView(R.id.tv_scroll_top)
+    ScrollTextView1 tvScrollTop;
 
     private CardFxPagerAdapter mCardAdapter;
     private ShadowTransformer shadowTransformer;
@@ -69,6 +76,8 @@ public class Fragment1 extends BaseFragment {
 
     private Fragment1RvAdapter adapter;
     private List<IndexPageApiqueryCardBean.DataBean> mList;
+
+    private int REQUEST_CODE = 1000;
 
     @Nullable
     @Override
@@ -84,6 +93,12 @@ public class Fragment1 extends BaseFragment {
     }
 
     private void initGonggao() {
+
+        List<String> strings = new ArrayList<>();
+        strings.add("传递健康身体");
+        strings.add("品味高级人生");
+        tvScrollTop.setList(strings);
+        tvScrollTop.startScroll();
 
         ViseUtil.Get(getContext(), NetUrl.IndexPageApiqueryNotice, null, new ViseUtil.ViseListener() {
             @Override
@@ -151,7 +166,7 @@ public class Fragment1 extends BaseFragment {
                 for (IndexPageApifindBannerCategoryBean.DataBean b : bean.getData()){
                     list.add(NetUrl.BASE_URL+b.getAppPic());
                 }
-//                init(banner, list);
+                init(banner, list);
             }
         });
 
@@ -188,7 +203,7 @@ public class Fragment1 extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ll_gonggao})
+    @OnClick({R.id.ll_gonggao, R.id.iv_saomiao, R.id.iv_youxuan})
     public void onClick(View view){
         Intent intent = new Intent();
         switch (view.getId()){
@@ -196,6 +211,37 @@ public class Fragment1 extends BaseFragment {
                 intent.setClass(getContext(), GonggaoListActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.iv_saomiao:
+                intent.setClass(getContext(), CaptureActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
+                break;
+            case R.id.iv_youxuan:
+                intent.setClass(getContext(), YouxuanShopActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**
+         * 处理二维码扫描结果
+         */
+        if (requestCode == REQUEST_CODE) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    ToastUtil.showShort(getContext(), "无效设备");
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    ToastUtil.showShort(getContext(), "解析二维码失败");
+                }
+            }
         }
     }
 

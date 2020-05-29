@@ -6,10 +6,11 @@ package com.jingna.artworkmall.net;
 
 public class NetUrl {
 
+//    public static final String BASE_URL = "http://192.168.1.102:80/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://192.168.1.166:80/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
-    public static final String BASE_URL = "http://122.112.187.234:80/";//http://192.168.2.211:8080/
-    public static final String H5BASE_URL = "http://39.98.188.171:8081/";//http://192.168.2.211:8080/
+    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+    public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/
 //    public static final String H5BASE_URL = "http://slsh5.5ijiaoyu.cn";//http://192.168.2.211:8080/
     public static final String MemUsersendMessage = "/MemUser/sendMessage";//发送验证码
     public static final String MemUserloginAPP = "/MemUser/loginAPP";//短信登录
@@ -62,5 +63,6 @@ public class NetUrl {
     public static final String AppVersionNumversionNumNew = "/AppVersionNum/versionNumNew";//最新版本
     public static final String MemUserverifyPwd = "/MemUser/verifyPwd";//提交订单验证密码
     public static final String MemUserfindByUserCoupons = "/MemUser/findByUserCoupons";//查询该用户在该商品中可用的优惠券
+    public static final String AppShopMemberEquityControllerqueryList = "/AppShopMemberEquityController/queryList";//会员权益列表
 
 }

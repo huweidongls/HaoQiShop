@@ -27,7 +27,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="@color/white_ffffff"
             android:textSize="17sp"
-            android:text="注册"
+            android:text="登录"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

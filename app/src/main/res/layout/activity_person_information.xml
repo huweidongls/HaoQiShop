@@ -197,7 +197,7 @@
     </LinearLayout>
 
     <Button
-        android:background="#A02630"
+        android:background="@color/theme"
         android:id="@+id/btn_out"
         android:textColor="#ffffff"
         android:textSize="20sp"

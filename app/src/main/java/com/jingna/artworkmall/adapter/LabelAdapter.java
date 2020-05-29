@@ -28,10 +28,10 @@ public class LabelAdapter extends RecyclerView.Adapter<LabelAdapter.ViewHolder> 
     public LabelAdapter(String[] data) {
         this.data = data;
         colors = new ArrayList<>();
-        colors.add(new LabelBean(R.color.label1, "#FF500B"));
-        colors.add(new LabelBean(R.color.label2, "#66A7FD"));
-        colors.add(new LabelBean(R.color.label3, "#F19C27"));
-        colors.add(new LabelBean(R.color.label4, "#94A3BB"));
+        colors.add(new LabelBean(R.drawable.bg_ff500b_10dp_bord, "#FF500B"));
+        colors.add(new LabelBean(R.drawable.bg_66a7fd_10dp_bord, "#66A7FD"));
+        colors.add(new LabelBean(R.drawable.bg_f19c27_10dp_bord, "#F19C27"));
+        colors.add(new LabelBean(R.drawable.bg_94a3bb_10dp_bord, "#94A3BB"));
     }
 
     @Override

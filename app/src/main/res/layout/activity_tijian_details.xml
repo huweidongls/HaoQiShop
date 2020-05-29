@@ -8,7 +8,7 @@
     tools:context="com.jingna.artworkmall.page.TijianDetailsActivity">
 
     <RelativeLayout
-        style="@style/rl_top_bar_gray">
+        style="@style/rl_top_bar">
 
         <RelativeLayout
             android:id="@+id/rl_back"
@@ -16,13 +16,26 @@
             android:layout_height="match_parent">
 
             <ImageView
-                style="@style/iv_top_back_gray" />
+                style="@style/iv_top_back" />
 
         </RelativeLayout>
 
         <TextView
             android:text="详情"
-            style="@style/tv_top_title_gray" />
+            style="@style/tv_top_title" />
+
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="57dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@mipmap/share"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -71,6 +84,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tv_price"
                 android:layout_marginLeft="25dp"
                 android:layout_centerVertical="true"
@@ -79,12 +93,82 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl_index"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon017"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="3dp"
+                            android:textColor="@color/black_333333"
+                            android:textSize="11sp"
+                            android:text="首页"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon018"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="3dp"
+                            android:textColor="@color/black_333333"
+                            android:textSize="11sp"
+                            android:text="客服"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_next"
             android:gravity="center"
-            android:background="#A02630"
+            android:background="@color/theme"
             android:textColor="@color/white_ffffff"
             android:textSize="18sp"
             android:text="下一步"

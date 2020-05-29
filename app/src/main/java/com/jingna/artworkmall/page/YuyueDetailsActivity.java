@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.BaseActivity;
+import com.jingna.artworkmall.util.StatusBarUtil;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,6 +23,7 @@ public class YuyueDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yuyue_details);
 
+        StatusBarUtil.setStatusBar(YuyueDetailsActivity.this, getResources().getColor(R.color.theme));
         ButterKnife.bind(YuyueDetailsActivity.this);
         initData();
 

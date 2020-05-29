@@ -18,6 +18,7 @@ import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.LazyFragment;
 import com.jingna.artworkmall.page.SubmitYuyueActivity;
 import com.jingna.artworkmall.util.Logger;
+import com.jingna.artworkmall.util.ToastUtil;
 import com.vise.xsnow.permission.OnPermissionCallback;
 import com.vise.xsnow.permission.PermissionManager;
 
@@ -38,6 +39,9 @@ public class FragmentYy extends LazyFragment {
     private LocationClient locationClient;
 
     private boolean isFirstLoc = true;
+
+    private double lat = 0.00;
+    private double lng = 0.00;
 
     @Override
     protected int getLayoutRes() {
@@ -83,13 +87,20 @@ public class FragmentYy extends LazyFragment {
 
     }
 
-    @OnClick({R.id.ll_yuyue})
+    @OnClick({R.id.ll_yuyue, R.id.ll_loc})
     public void onClick(View view){
         Intent intent = new Intent();
         switch (view.getId()){
             case R.id.ll_yuyue:
                 intent.setClass(getContext(), SubmitYuyueActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.ll_loc:
+                LatLng ll = new LatLng(lat,
+                        lng);
+                MapStatus.Builder builder = new MapStatus.Builder();
+                builder.target(ll).zoom(18.0f);
+                baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
                 break;
         }
     }
@@ -123,8 +134,10 @@ public class FragmentYy extends LazyFragment {
     public void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
-        locationClient.stop();
-        locationClient.unRegisterLocationListener(bdLocationListener);
+        if(locationClient != null){
+            locationClient.stop();
+            locationClient.unRegisterLocationListener(bdLocationListener);
+        }
     }
 
     @Override
@@ -148,6 +161,8 @@ public class FragmentYy extends LazyFragment {
             if (bdLocation == null || mapView == null) {
                 return;
             }
+            lat = bdLocation.getLatitude();
+            lng = bdLocation.getLongitude();
             locData = new MyLocationData.Builder()
                     .latitude(bdLocation.getLatitude())
                     .longitude(bdLocation.getLongitude()).build();

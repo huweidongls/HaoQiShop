@@ -84,7 +84,7 @@
         <TextView
             android:id="@+id/tv_next"
             android:gravity="center"
-            android:background="#A02630"
+            android:background="@color/theme"
             android:textColor="@color/white_ffffff"
             android:textSize="18sp"
             android:text="下一步"

@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/fragment_sy_fx_card_img"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="120dp" />
 

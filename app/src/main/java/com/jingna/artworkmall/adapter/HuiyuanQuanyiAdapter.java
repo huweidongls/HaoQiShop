@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jingna.artworkmall.R;
+import com.jingna.artworkmall.bean.AppShopMemberEquityControllerqueryListBean;
 import com.jingna.artworkmall.page.HuiyuanQuanyiDetailsActivity;
 
 import java.util.List;
@@ -19,9 +21,9 @@ import java.util.List;
 public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdapter.ViewHolder> {
 
     private Context context;
-    private List<String> data;
+    private List<AppShopMemberEquityControllerqueryListBean.DataBean> data;
 
-    public HuiyuanQuanyiAdapter(List<String> data) {
+    public HuiyuanQuanyiAdapter(List<AppShopMemberEquityControllerqueryListBean.DataBean> data) {
         this.data = data;
     }
 
@@ -36,14 +38,18 @@ public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(context, HuiyuanQuanyiDetailsActivity.class);
-                context.startActivity(intent);
-            }
-        });
+        holder.tvTitle.setText(data.get(position).getShopName());
+        holder.tvTime.setText(data.get(position).getStopTime());
+        holder.tvCs.setText(data.get(position).getShopCs()+"");
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(context, HuiyuanQuanyiDetailsActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -54,8 +60,15 @@ public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdap
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        private TextView tvTitle;
+        private TextView tvTime;
+        private TextView tvCs;
+
         public ViewHolder(View itemView) {
             super(itemView);
+            tvTitle = itemView.findViewById(R.id.tv_title);
+            tvTime = itemView.findViewById(R.id.tv_time);
+            tvCs = itemView.findViewById(R.id.tv_cs);
         }
     }
 

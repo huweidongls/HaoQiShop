@@ -33,6 +33,7 @@ public class MessageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+        StatusBarUtil.setStatusBar(MessageActivity.this, getResources().getColor(R.color.theme));
         ButterKnife.bind(MessageActivity.this);
         initData();
 

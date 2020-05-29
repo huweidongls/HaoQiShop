@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.BaseActivity;
+import com.jingna.artworkmall.util.StatusBarUtil;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -19,6 +20,7 @@ public class HuiyuanQuanyiDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_huiyuan_quanyi_details);
 
+        StatusBarUtil.setStatusBar(HuiyuanQuanyiDetailsActivity.this, getResources().getColor(R.color.theme));
         ButterKnife.bind(HuiyuanQuanyiDetailsActivity.this);
         initData();
 

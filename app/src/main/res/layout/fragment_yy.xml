@@ -61,6 +61,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_loc"
                 android:layout_marginLeft="37dp"
                 android:layout_marginBottom="19dp"
                 android:layout_alignParentBottom="true"
@@ -79,7 +80,7 @@
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/black_333333"
                     android:textSize="11sp"
-                    android:text="输入位置"
+                    android:text="重新定位"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

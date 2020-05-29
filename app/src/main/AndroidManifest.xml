@@ -135,7 +135,8 @@
         <!-- android:enabled="true" -->
         <!-- android:process=":remote"/> -->
         <activity android:name=".page.YuyueDetailsActivity" />
-        <activity android:name=".page.SubmitYuyueActivity"></activity>
+        <activity android:name=".page.SubmitYuyueActivity" />
+        <activity android:name=".page.YouxuanShopActivity"></activity>
     </application>
 
 </manifest>

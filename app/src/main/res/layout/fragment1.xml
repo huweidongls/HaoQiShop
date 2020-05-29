@@ -22,9 +22,16 @@
                 android:layout_width="35dp"
                 android:layout_height="25dp" />
 
-            <TextView
-                android:text="传递健康身体 品味高级人生"
-                style="@style/tv_top_title" />
+            <com.jingna.artworkmall.widget.ScrollTextView1
+                android:gravity="center"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_scroll_top"
+                android:textColor="@color/white_ffffff"
+                android:textSize="17sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <RelativeLayout
                 android:layout_alignParentRight="true"
@@ -61,7 +68,8 @@
                         android:layout_height="200dp">
 
                         <ImageView
-                            android:src="@color/theme"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/index_bg"
                             android:layout_width="match_parent"
                             android:layout_height="160dp" />
 
@@ -89,7 +97,7 @@
                                 <TextView
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginLeft="8dp"
-                                    android:textColor="#CECECE"
+                                    android:textColor="#ffffff"
                                     android:textSize="12sp"
                                     android:text="请输入搜索关键字"
                                     android:layout_width="wrap_content"
@@ -297,6 +305,7 @@
                         android:layout_height="70dp">
 
                         <ImageView
+                            android:id="@+id/iv_saomiao"
                             android:scaleType="centerCrop"
                             android:layout_marginLeft="15dp"
                             android:src="@mipmap/index5"
@@ -305,6 +314,7 @@
                             android:layout_height="match_parent" />
 
                         <ImageView
+                            android:id="@+id/iv_youxuan"
                             android:scaleType="centerCrop"
                             android:layout_marginRight="15dp"
                             android:layout_marginLeft="11dp"
@@ -321,7 +331,7 @@
                         android:layout_marginTop="10dp"
                         android:id="@+id/vp"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
+                        android:layout_height="122dp"
                         android:clipToPadding="false"
                         android:overScrollMode="never" />
 

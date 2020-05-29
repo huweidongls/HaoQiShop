@@ -51,14 +51,7 @@ public class Register2Activity extends BaseActivity {
 
         tel = getIntent().getStringExtra("tel");
         yqm = getIntent().getStringExtra("yqm");
-        StatusBarUtil.setStatusBarColor(Register2Activity.this, getResources().getColor(R.color.white_ffffff));
-        //一般的手机的状态栏文字和图标都是白色的, 可如果你的应用也是纯白色的, 或导致状态栏文字看不清
-        //所以如果你是这种情况,请使用以下代码, 设置状态使用深色文字图标风格, 否则你可以选择性注释掉这个if内容
-        if (!StatusBarUtil.setStatusBarDarkTheme(Register2Activity.this, true)) {
-            //如果不支持设置深色风格 为了兼容总不能让状态栏白白的看不清, 于是设置一个状态栏颜色为半透明,
-            //这样半透明+白=灰, 状态栏的文字能看得清
-            StatusBarUtil.setStatusBarColor(Register2Activity.this,0x55000000);
-        }
+        StatusBarUtil.setStatusBar(Register2Activity.this, getResources().getColor(R.color.theme));
         ButterKnife.bind(Register2Activity.this);
         initData();
 
