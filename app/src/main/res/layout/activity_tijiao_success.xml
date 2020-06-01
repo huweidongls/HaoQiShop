@@ -58,7 +58,7 @@
         android:layout_marginTop="1dp"
         android:textColor="#9C9C9C"
         android:textSize="13sp"
-        android:text="谢谢您对石榴树的支持！"
+        android:text="谢谢您的支持！"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -21,9 +21,9 @@ import java.util.List;
 public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdapter.ViewHolder> {
 
     private Context context;
-    private List<AppShopMemberEquityControllerqueryListBean.DataBean> data;
+    private List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> data;
 
-    public HuiyuanQuanyiAdapter(List<AppShopMemberEquityControllerqueryListBean.DataBean> data) {
+    public HuiyuanQuanyiAdapter(List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> data) {
         this.data = data;
     }
 

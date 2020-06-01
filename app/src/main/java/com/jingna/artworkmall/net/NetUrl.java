@@ -63,6 +63,6 @@ public class NetUrl {
     public static final String AppVersionNumversionNumNew = "/AppVersionNum/versionNumNew";//最新版本
     public static final String MemUserverifyPwd = "/MemUser/verifyPwd";//提交订单验证密码
     public static final String MemUserfindByUserCoupons = "/MemUser/findByUserCoupons";//查询该用户在该商品中可用的优惠券
-    public static final String AppShopMemberEquityControllerqueryList = "/AppShopMemberEquityController/queryList";//会员权益列表
+    public static final String MemUsergetUserByLlk = "/MemUser/getUserByLlk";//会员权益列表
 
 }

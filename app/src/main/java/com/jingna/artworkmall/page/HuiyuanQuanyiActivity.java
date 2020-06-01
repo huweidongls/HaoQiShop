@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jingna.artworkmall.R;
@@ -12,6 +14,7 @@ import com.jingna.artworkmall.adapter.HuiyuanQuanyiAdapter;
 import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.bean.AppShopMemberEquityControllerqueryListBean;
 import com.jingna.artworkmall.net.NetUrl;
+import com.jingna.artworkmall.util.GlideUtils;
 import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtil;
@@ -32,9 +35,15 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
 
     @BindView(R.id.rv)
     RecyclerView recyclerView;
+    @BindView(R.id.iv_avatar)
+    ImageView ivAvatar;
+    @BindView(R.id.tv_name)
+    TextView tvName;
+    @BindView(R.id.tv_status)
+    TextView tvStatus;
 
     private HuiyuanQuanyiAdapter adapter;
-    private List<AppShopMemberEquityControllerqueryListBean.DataBean> mList;
+    private List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +60,24 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
 
         Map<String, String> map = new LinkedHashMap<>();
         map.put("id", SpUtils.getUserId(context));
-        ViseUtil.Get(context, NetUrl.AppShopMemberEquityControllerqueryList, map, new ViseUtil.ViseListener() {
+        ViseUtil.Get(context, NetUrl.MemUsergetUserByLlk, map, new ViseUtil.ViseListener() {
             @Override
             public void onReturn(String s) {
                 Gson gson = new Gson();
                 AppShopMemberEquityControllerqueryListBean bean = gson.fromJson(s, AppShopMemberEquityControllerqueryListBean.class);
-                mList = bean.getData();
+
+                GlideUtils.into(context, NetUrl.BASE_URL+bean.getData().getHeadPhoto(), ivAvatar);
+                tvName.setText(bean.getData().getMemName());
+                int i = bean.getData().getSfStatus();
+                if(i == 1){
+                    tvStatus.setText("vip");
+                }else if(i == 2){
+                    tvStatus.setText("区域经理");
+                }else if(i == 3){
+                    tvStatus.setText("大区经理");
+                }
+
+                mList = bean.getData().getList();
                 adapter = new HuiyuanQuanyiAdapter(mList);
                 LinearLayoutManager manager = new LinearLayoutManager(context);
                 manager.setOrientation(LinearLayoutManager.VERTICAL);
