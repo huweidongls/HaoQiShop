@@ -51,12 +51,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/tv_title"
                     android:layout_gravity="center_vertical"
                     android:textColor="#000000"
                     android:textSize="15sp"
                     android:ellipsize="end"
                     android:lines="2"
-                    android:text="智能升级无线款 家人膝盖护理专家健康生活红光照射气囊循环"
                     android:layout_marginRight="40dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -80,11 +81,11 @@
                             android:layout_height="13dp" />
 
                         <TextView
+                            android:id="@+id/tv_status"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="4dp"
                             android:textColor="#777777"
                             android:textSize="11sp"
-                            android:text="派送中"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -103,11 +104,11 @@
                             android:layout_height="14dp" />
 
                         <TextView
+                            android:id="@+id/tv_jl"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="6dp"
                             android:textColor="#777777"
                             android:textSize="11sp"
-                            android:text="0.3km"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -139,11 +140,11 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/tv_name"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="121dp"
                     android:textSize="12sp"
                     android:textColor="#333333"
-                    android:text="张宝林"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -170,11 +171,11 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/tv_phone"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="121dp"
                     android:textSize="12sp"
                     android:textColor="#333333"
-                    android:text="15341556555"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -201,11 +202,12 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/tv_address"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="121dp"
                     android:textSize="12sp"
                     android:textColor="#333333"
-                    android:text="金华大厦"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -232,11 +234,11 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/tv_xiadan_time"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="121dp"
                     android:textSize="12sp"
                     android:textColor="#333333"
-                    android:text="2020-05-13 21:22:16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -263,11 +265,11 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/tv_songda_time"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="121dp"
                     android:textSize="12sp"
                     android:textColor="#333333"
-                    android:text="2020-05-13 22:52:16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -281,18 +283,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="45dp" />
-
-            <Button
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/bg_23c1c7_3dp_bord"
-                android:textColor="@color/theme"
-                android:textSize="16sp"
-                android:text="取消预约"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp" />
 

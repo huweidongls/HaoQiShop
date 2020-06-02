@@ -59,7 +59,7 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
     private void initData() {
 
         Map<String, String> map = new LinkedHashMap<>();
-        map.put("id", SpUtils.getUserId(context));
+        map.put("memberId", SpUtils.getUserId(context));
         ViseUtil.Get(context, NetUrl.MemUsergetUserByLlk, map, new ViseUtil.ViseListener() {
             @Override
             public void onReturn(String s) {

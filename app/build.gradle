@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.jingna.artworkmall"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 26
         versionCode 11
         versionName "1.0.11"
@@ -69,4 +69,5 @@ dependencies {
     compile 'com.yinglan.alphatabs:library:1.0.8'
     implementation 'com.github.SheHuan:NiceImageView:1.0.5'
     implementation files('libs/BaiduLBS_Android.jar')
+    compile 'com.contrarywind:Android-PickerView:4.1.9'
 }

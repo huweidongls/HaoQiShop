@@ -9,18 +9,31 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.google.gson.Gson;
 import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.LazyFragment;
+import com.jingna.artworkmall.bean.AppCooperativeMerchantSetLatLngBean;
+import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.page.SubmitYuyueActivity;
 import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.ToastUtil;
+import com.jingna.artworkmall.util.ViseUtil;
 import com.vise.xsnow.permission.OnPermissionCallback;
 import com.vise.xsnow.permission.PermissionManager;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,6 +114,28 @@ public class FragmentYy extends LazyFragment {
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+                Map<String, String> map = new LinkedHashMap<>();
+                map.put("lat", lat+"");
+                map.put("lng", lng+"");
+                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
+                    @Override
+                    public void onReturn(String s) {
+                        Logger.e("123123", s);
+                        Gson gson = new Gson();
+                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
+                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
+                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+                        //构建Marker图标
+                        BitmapDescriptor bitmap = BitmapDescriptorFactory
+                                .fromResource(R.mipmap.icon020);
+                        for (int i = 0; i<list.size(); i++){
+                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
+                        }
+                        baiduMap.addOverlays(options);
+                    }
+                });
+
                 break;
         }
     }
@@ -174,6 +209,28 @@ public class FragmentYy extends LazyFragment {
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+                Map<String, String> map = new LinkedHashMap<>();
+                map.put("lat", bdLocation.getLatitude()+"");
+                map.put("lng", bdLocation.getLongitude()+"");
+                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
+                    @Override
+                    public void onReturn(String s) {
+                        Logger.e("123123", s);
+                        Gson gson = new Gson();
+                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
+                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
+                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+                        //构建Marker图标
+                        BitmapDescriptor bitmap = BitmapDescriptorFactory
+                                .fromResource(R.mipmap.icon020);
+                        for (int i = 0; i<list.size(); i++){
+                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
+                        }
+                        baiduMap.addOverlays(options);
+                    }
+                });
+
             }
 
         }

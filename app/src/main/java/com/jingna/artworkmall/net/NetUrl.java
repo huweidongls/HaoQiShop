@@ -7,9 +7,9 @@ package com.jingna.artworkmall.net;
 public class NetUrl {
 
 //    public static final String BASE_URL = "http://192.168.1.102:80/";//http://192.168.2.211:8080/
-//    public static final String BASE_URL = "http://192.168.1.166:80/";//http://192.168.2.211:8080/
+    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
-    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
     public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/
 //    public static final String H5BASE_URL = "http://slsh5.5ijiaoyu.cn";//http://192.168.2.211:8080/
     public static final String MemUsersendMessage = "/MemUser/sendMessage";//发送验证码
@@ -64,5 +64,9 @@ public class NetUrl {
     public static final String MemUserverifyPwd = "/MemUser/verifyPwd";//提交订单验证密码
     public static final String MemUserfindByUserCoupons = "/MemUser/findByUserCoupons";//查询该用户在该商品中可用的优惠券
     public static final String MemUsergetUserByLlk = "/MemUser/getUserByLlk";//会员权益列表
+    public static final String AppCooperativeMerchantSetLatLng = "/AppCooperativeMerchant/SetLatLng";//根据坐标查询附近10公里的商家
+    public static final String AppMakeAnapPointmentOrderControllerSubmitMakeAnapPointment = "/AppMakeAnapPointmentOrderController/SubmitMakeAnapPointment";//APP提交预约订单
+    public static final String AppMakeAnapPointmentOrderControlleryuYueList = "/AppMakeAnapPointmentOrderController/yuYueList";//app预约列表
+    public static final String AppMakeAnapPointmentOrderControlleryuYueGetOne = "/AppMakeAnapPointmentOrderController/yuYueGetOne";//App预约详情
 
 }
