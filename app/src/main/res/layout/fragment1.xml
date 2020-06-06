@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content" />
 
             <RelativeLayout
+                android:id="@+id/rl_kefu"
                 android:layout_alignParentRight="true"
                 android:layout_width="66dp"
                 android:layout_height="match_parent">

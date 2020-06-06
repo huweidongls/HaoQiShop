@@ -7,9 +7,9 @@ package com.jingna.artworkmall.net;
 public class NetUrl {
 
 //    public static final String BASE_URL = "http://192.168.1.102:80/";//http://192.168.2.211:8080/
-    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
-//    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
     public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/
 //    public static final String H5BASE_URL = "http://slsh5.5ijiaoyu.cn";//http://192.168.2.211:8080/
     public static final String MemUsersendMessage = "/MemUser/sendMessage";//发送验证码
@@ -27,8 +27,8 @@ public class NetUrl {
     public static final String AppBankCardtoDelete = "/AppBankCard/toDelete";//删除银行卡
     public static final String AppBankCardtoUpdate = "/AppBankCard/toUpdate";//添加银行卡
     public static final String MemUserretrievePassword = "/MemUser/retrievePassword";//通过手机验证码设置新密码
-    public static final String AppPlatformBalanceMybalance = "/AppPlatformBalance/Mybalance";//查询平台币余额
-    public static final String AppPlatformBalancequeryList = "/AppPlatformBalance/queryList";//查询该用户平台币余额明细
+    public static final String AppPlatformBalanceMybalance = "/AppPlatformBalance/Mybalance";//查询积分余额
+    public static final String AppPlatformBalancequeryList = "/AppPlatformBalance/queryList";//查询该用户积分余额明细
     public static final String IndexPageApifindBannerCategory = "/IndexPageApi/findBannerCategory";//显示所有轮播图
     public static final String IndexPageApiqueryCard = "/IndexPageApi/queryCard";//首页体检卡
     public static final String AppGoodsShopqueryList = "/AppGoodsShop/queryList";//商品列表
@@ -49,7 +49,7 @@ public class NetUrl {
     public static final String AppShopCategoryqueryChildList = "/AppShopCategory/queryChildList";//子分类列表接口
     public static final String AppRechargeExtractwithdrawal = "/AppRechargeExtract/withdrawal";//去提现接口
     public static final String AppRechargeExtractwithdrawalApply = "/AppRechargeExtract/withdrawalApply";//提现申请
-    public static final String AppRechargeExtractrechargePtb = "/AppRechargeExtract/rechargePtb";//充值平台币
+    public static final String AppRechargeExtractrechargePtb = "/AppRechargeExtract/rechargePtb";//充值积分
     public static final String AppBankCardupdateDefault = "/AppBankCard/updateDefault";//设置默认银行卡接口
     public static final String MemUsergetByMyShop = "/MemUser/getByMyShop";//我的店铺
     public static final String IndexPageApiqueryGoodsContent = "/IndexPageApi/queryGoodsContent";//首页内容图片

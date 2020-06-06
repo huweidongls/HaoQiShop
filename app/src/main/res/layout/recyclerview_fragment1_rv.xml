@@ -18,7 +18,7 @@
             app:corner_top_right_radius="3dp"
             app:corner_top_left_radius="3dp"
             android:id="@+id/iv"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@mipmap/img0063x"
             android:layout_width="match_parent"
             android:layout_height="167dp" />
@@ -60,7 +60,7 @@
             android:layout_marginLeft="12dp"
             android:id="@+id/tv_price"
             android:textColor="#E32D2D"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:text="1510.00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

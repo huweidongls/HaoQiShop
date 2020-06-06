@@ -10,7 +10,7 @@ public class AppOrdergetByGoodsBean {
 
     /**
      * status : 200
-     * data : {"id":"1578389805684","addresPhone":"18643356464","addresUname":"宁","addresName":"内蒙古-乌海市-海勃湾区笨驴子","orderStatus":"4","paymentMode":"平台币支付","createTime":"2020-01-07 17:36:38","orderRealPrice":246,"list":[],"num":2,"appPic":"upload/goods/2019-12-30/f67db3c583824459b9ec812b99741ef6.jpg,upload/goods/2020-01-07/215add579f63468e9ed602dd6a6e7a59.jpg,upload/goods/2020-01-07/1d525b01596a4e0f86ec5e5a017424d6.jpg","label":"特惠,精选","goodsName":"测试商品"}
+     * data : {"id":"1578389805684","addresPhone":"18643356464","addresUname":"宁","addresName":"内蒙古-乌海市-海勃湾区笨驴子","orderStatus":"4","paymentMode":"积分支付","createTime":"2020-01-07 17:36:38","orderRealPrice":246,"list":[],"num":2,"appPic":"upload/goods/2019-12-30/f67db3c583824459b9ec812b99741ef6.jpg,upload/goods/2020-01-07/215add579f63468e9ed602dd6a6e7a59.jpg,upload/goods/2020-01-07/1d525b01596a4e0f86ec5e5a017424d6.jpg","label":"特惠,精选","goodsName":"测试商品"}
      */
 
     private String status;
@@ -39,7 +39,7 @@ public class AppOrdergetByGoodsBean {
          * addresUname : 宁
          * addresName : 内蒙古-乌海市-海勃湾区笨驴子
          * orderStatus : 4
-         * paymentMode : 平台币支付
+         * paymentMode : 积分支付
          * createTime : 2020-01-07 17:36:38
          * orderRealPrice : 246
          * list : []

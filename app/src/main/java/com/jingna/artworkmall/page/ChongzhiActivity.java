@@ -157,7 +157,7 @@ public class ChongzhiActivity extends BaseActivity {
 
         Map<String, String> map = new LinkedHashMap<>();
         map.put("id", SpUtils.getUserId(context));
-        map.put("str", "充值平台币");
+        map.put("str", "充值积分");
         String jine = etJine.getText().toString();
         if(!StringUtils.isEmpty(money)){
             map.put("ptb", money);

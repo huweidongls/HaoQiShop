@@ -17,6 +17,17 @@ public class SpUtils {
     public static String SEARCH_HISTORY = "search_history";
     public static String REAL = "real";
     public static String LOGIN_URL = "login_url";
+    public static String LANYA_TIME = "lanya_time";
+
+    public static void setLanyaTime(Context context, boolean time){
+        spCache = new SpCache(context, "user_info");
+        spCache.put(LANYA_TIME, time);
+    }
+
+    public static boolean getLanyaTime(Context context){
+        spCache = new SpCache(context, "user_info");
+        return spCache.get(LANYA_TIME, false);
+    }
 
     public static void setLoginUrl(Context context, String loginUrl){
         spCache = new SpCache(context, "user_info");

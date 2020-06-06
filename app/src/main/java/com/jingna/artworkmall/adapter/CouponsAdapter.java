@@ -55,7 +55,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
             holder.tvBottom.setText("满"+StringUtils.roundByScale(data.get(position).getMaxMoney(), 2)+"元可用");
             holder.rl.setBackgroundResource(R.mipmap.lan);
             holder.tvMax.setVisibility(View.VISIBLE);
-            holder.tvMax.setText("最高抵扣"+ StringUtils.roundByScale(data.get(position).getSumDiscount(), 2)+"平台币");
+            holder.tvMax.setText("最高抵扣"+ StringUtils.roundByScale(data.get(position).getSumDiscount(), 2)+"积分");
         }
         holder.tvTitle.setText(data.get(position).getName());
         holder.tvTime.setText(data.get(position).getCreateTime()+"-"+data.get(position).getPastTime());

@@ -141,7 +141,8 @@
         <activity android:name=".page.YuyueDetailsActivity" />
         <activity android:name=".page.SubmitYuyueActivity" />
         <activity android:name=".page.YouxuanShopActivity" />
-        <activity android:name=".page.LayaControlActivity"/>
+        <activity android:name=".page.LayaControlActivity"
+            android:launchMode="singleInstance"/>
         <service android:name=".service.BluetoothLeService"
             android:enabled="true"/>
     </application>

@@ -250,7 +250,7 @@ public class TijianSureActivity extends BaseActivity {
             ViseUtil.Get(context, NetUrl.AppOrderordersSubmitted, map, dialog, new ViseUtil.ViseListener() {
                 @Override
                 public void onReturn(String s) {
-                    ToastUtil.showShort(context, "平台币支付成功");
+                    ToastUtil.showShort(context, "积分支付成功");
                     Intent intent = new Intent();
                     intent.setClass(context, TijiaoSuccessActivity.class);
                     intent.putExtra("type", type);

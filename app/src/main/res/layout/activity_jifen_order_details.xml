@@ -170,7 +170,7 @@
                     android:layout_marginRight="20dp"
                     android:textColor="#686868"
                     android:textSize="14sp"
-                    android:text="支付方式：平台币支付"
+                    android:text="支付方式：积分支付"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

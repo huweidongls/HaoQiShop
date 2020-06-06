@@ -14,9 +14,13 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +30,17 @@ import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.dialog.DialogCustom;
 import com.jingna.artworkmall.service.BluetoothLeService;
 import com.jingna.artworkmall.util.Logger;
+import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtils;
 import com.jingna.artworkmall.util.Utils;
+import com.jingna.artworkmall.widget.LongClickButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +52,16 @@ public class LayaControlActivity extends BaseActivity {
 
     @BindView(R.id.tv_state)
     TextView tvState;
+    @BindView(R.id.btn_pause)
+    Button btnPause;
+    @BindView(R.id.btn_top)
+    LongClickButton btnTop;
+    @BindView(R.id.btn_bottom)
+    LongClickButton btnBottom;
+    @BindView(R.id.btn_start)
+    Button btnStart;
+
+    private boolean isPause = true;
 
     private final static String TAG = LayaControlActivity.class.getSimpleName();
     //蓝牙4.0的UUID,其中0000ffe1-0000-1000-8000-00805f9b34fb是广州汇承信息科技有限公司08蓝牙模块的UUID
@@ -66,6 +85,9 @@ public class LayaControlActivity extends BaseActivity {
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
     //蓝牙特征值
     private static BluetoothGattCharacteristic target_chara = null;
+
+    private boolean isConnect = false;
+
     private Handler mhandler = new Handler();
     private Handler myHandler = new Handler() {
         // 2.重写消息处理函数
@@ -77,6 +99,13 @@ public class LayaControlActivity extends BaseActivity {
                     String state = msg.getData().getString("connect_state");
                     if(state.equals("connected")){
                         tvState.setText("蓝牙已连接");
+                        isConnect = true;
+                        SpUtils.setLanyaTime(context, true);
+                    }
+                    if(state.equals("disconnected")){
+                        tvState.setText("蓝牙未连接");
+                        isConnect = false;
+                        finish();
                     }
                     break;
                 }
@@ -110,6 +139,46 @@ public class LayaControlActivity extends BaseActivity {
 
     private void initData() {
 
+        btnTop.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
+            @Override
+            public void repeatAction() {
+                if(!isPause){
+                    top();
+                }else {
+                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 250);
+        btnTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isPause){
+                    top();
+                }else {
+                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnBottom.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
+            @Override
+            public void repeatAction() {
+                if(!isPause){
+                    bottom();
+                }else {
+                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 250);
+        btnBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isPause){
+                    bottom();
+                }else {
+                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
@@ -119,6 +188,8 @@ public class LayaControlActivity extends BaseActivity {
         //解除广播接收器
         unregisterReceiver(mGattUpdateReceiver);
         mBluetoothLeService = null;
+        unbindService(mServiceConnection);
+        SpUtils.setLanyaTime(context, false);
     }
 
     // Activity出来时候，绑定广播接收器，监听蓝牙连接服务传过来的事件
@@ -196,13 +267,35 @@ public class LayaControlActivity extends BaseActivity {
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action))//有效数据
             {
                 //处理发送过来的数据
-                displayData(intent.getExtras().getString(
+                displayData(intent.getExtras().getByteArray(
                         BluetoothLeService.EXTRA_DATA));
-                System.out.println("BroadcastReceiver onData:"
-                        + intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
             }
         }
     };
+
+    /**
+     * @param @param rev_string(接受的数据)
+     * @return void
+     * @throws
+     * @Title: displayData
+     * @Description: TODO(接收到的数据在scrollview上显示)
+     */
+    private void displayData(byte[] data) {
+
+        byte top[] = {(byte) 0xCB, 0x00, 0x00, 0x13, (byte) 0xBC};//上限
+        byte bottom[] = {(byte) 0xCB, 0x00, 0x00, 0x14, (byte) 0xBC};//下限
+
+        Logger.e("123123", Arrays.toString(data));
+        Logger.e("123123", Arrays.toString(top));
+
+        if(Arrays.equals(data, top)){
+            Toast.makeText(context, "已到达上限", Toast.LENGTH_SHORT).show();
+        }
+        if(Arrays.equals(data, bottom)){
+            Toast.makeText(context, "已到达下限", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     /* 更新连接状态 */
     private void updateConnectionState(String status) {
@@ -227,27 +320,6 @@ public class LayaControlActivity extends BaseActivity {
                 .addAction(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED);
         intentFilter.addAction(BluetoothLeService.ACTION_DATA_AVAILABLE);
         return intentFilter;
-    }
-
-    /**
-     * @param @param rev_string(接受的数据)
-     * @return void
-     * @throws
-     * @Title: displayData
-     * @Description: TODO(接收到的数据在scrollview上显示)
-     */
-    private void displayData(String rev_string) {
-        Logger.e("123123", rev_string);
-//        rev_str += rev_string;
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                rev_tv.setText(rev_str);
-//                rev_sv.scrollTo(0, rev_tv.getMeasuredHeight());
-//                System.out.println("rev:" + rev_str);
-//            }
-//        });
-
     }
 
     /**
@@ -354,94 +426,90 @@ public class LayaControlActivity extends BaseActivity {
         return lens;
     }
 
-    /*
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+    /**
      * 发送按键的响应事件，主要发送文本框的数据
      */
-    @OnClick({R.id.btn_pause, R.id.btn_start1, R.id.btn_start, R.id.ll_top, R.id.ll_bottom, R.id.ll_end})
+    @OnClick({R.id.rl_back, R.id.btn_pause, R.id.btn_start, R.id.ll_end})
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_pause:
-                if (Utils.isFastClick()) {
-                    DialogCustom dialogCustom = new DialogCustom(context, "是否暂停", new DialogCustom.OnYesListener() {
-                        @Override
-                        public void onYes() {
-                            byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x14, (byte) 0xFD};
-                            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-                            //调用蓝牙服务的写特征值方法实现发送数据
-                            mBluetoothLeService.writeCharacteristic(target_chara);
-                        }
-                    });
-                    dialogCustom.show();
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
-                }
+            case R.id.rl_back:
+                moveTaskToBack(true);
                 break;
-            case R.id.btn_start1:
-                if (Utils.isFastClick()) {
-                    DialogCustom dialogCustom = new DialogCustom(context, "是否开始连接", new DialogCustom.OnYesListener() {
-                        @Override
-                        public void onYes() {
-                            byte buff[] = {(byte) 0xDF, 0x11, 0x00, (byte) 0xB4, (byte) 0xFD};
-                            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-                            //调用蓝牙服务的写特征值方法实现发送数据
-                            mBluetoothLeService.writeCharacteristic(target_chara);
+            case R.id.btn_pause:
+                if(isConnect){
+                    if (Utils.isFastClick()) {
+                        if(isPause){
+                            isPause = false;
+                            pause();
+                            btnPause.setText("继续");
+                        }else {
+                            isPause = true;
+                            startService();
+                            btnPause.setText("暂停");
                         }
-                    });
-                    dialogCustom.show();
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_start:
-                if (Utils.isFastClick()) {
-                    DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务", new DialogCustom.OnYesListener() {
-                        @Override
-                        public void onYes() {
-                            byte buff1[] = {(byte) 0xDF, 0x12, 0x00, 0x13, (byte) 0xFD};
-                            target_chara.setValue(buff1);//只能一次发送20字节，所以这里要分包发送
-                            //调用蓝牙服务的写特征值方法实现发送数据
-                            mBluetoothLeService.writeCharacteristic(target_chara);
-                        }
-                    });
-                    dialogCustom.show();
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.ll_top:
-                if (Utils.isFastClick()) {
-                    byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x11, (byte) 0xFD};
-                    target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-                    //调用蓝牙服务的写特征值方法实现发送数据
-                    mBluetoothLeService.writeCharacteristic(target_chara);
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.ll_bottom:
-                if (Utils.isFastClick()) {
-                    byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x12, (byte) 0xFD};
-                    target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-                    //调用蓝牙服务的写特征值方法实现发送数据
-                    mBluetoothLeService.writeCharacteristic(target_chara);
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                if(isConnect){
+                    if (Utils.isFastClick()) {
+                        DialogCustom dialogCustom = new DialogCustom(context, "是否开始连接", new DialogCustom.OnYesListener() {
+                            @Override
+                            public void onYes() {
+                                start();
+                                Timer timer = new Timer();
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        startService();
+                                    }
+                                }, 500);
+                                btnStart.setEnabled(false);
+                            }
+                        });
+                        dialogCustom.show();
+                    } else {
+                        Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.ll_end:
-                if (Utils.isFastClick()) {
-                    DialogCustom dialogCustom = new DialogCustom(context, "是否立即结束服务", new DialogCustom.OnYesListener() {
-                        @Override
-                        public void onYes() {
-                            byte buff[] = {(byte) 0xDF, 0x13, 0x00, 0x11, (byte) 0xFD};
-                            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-                            //调用蓝牙服务的写特征值方法实现发送数据
-                            mBluetoothLeService.writeCharacteristic(target_chara);
-                        }
-                    });
-                    dialogCustom.show();
-                } else {
-                    Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                if(isConnect){
+                    if (Utils.isFastClick()) {
+                        DialogCustom dialogCustom = new DialogCustom(context, "是否立即结束服务", new DialogCustom.OnYesListener() {
+                            @Override
+                            public void onYes() {
+                                if(isPause){
+                                    pause();
+                                    Timer timer = new Timer();
+                                    timer.schedule(new TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            end();
+                                        }
+                                    }, 500);
+                                }else {
+                                    end();
+                                }
+                            }
+                        });
+                        dialogCustom.show();
+                    } else {
+                        Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -457,6 +525,79 @@ public class LayaControlActivity extends BaseActivity {
             result += hexString.toUpperCase();
         }
         return result;
+    }
+
+    /**
+     * 蓝牙开始连接
+     */
+    private void start(){
+        byte buff[] = {(byte) 0xDF, 0x11, 0x0E, 0x10, (byte) 0xFD};
+        target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+        //调用蓝牙服务的写特征值方法实现发送数据
+        mBluetoothLeService.writeCharacteristic(target_chara);
+//        byte buff[] = {(byte) 0xDF, 0x11, 0x00, 0x1E, (byte) 0xFD};
+//        target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+//        //调用蓝牙服务的写特征值方法实现发送数据
+//        mBluetoothLeService.writeCharacteristic(target_chara);
+    }
+
+    /**
+     * 蓝牙开始服务
+     */
+    private void startService(){
+        byte buff1[] = {(byte) 0xDF, 0x12, 0x00, 0x13, (byte) 0xFD};
+        target_chara.setValue(buff1);//只能一次发送20字节，所以这里要分包发送
+        //调用蓝牙服务的写特征值方法实现发送数据
+        mBluetoothLeService.writeCharacteristic(target_chara);
+    }
+
+    /**
+     * 蓝牙暂停服务
+     */
+    private void pause(){
+        byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x14, (byte) 0xFD};
+        target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+        //调用蓝牙服务的写特征值方法实现发送数据
+        mBluetoothLeService.writeCharacteristic(target_chara);
+    }
+
+    /**
+     * 蓝牙结束服务
+     */
+    private void end(){
+        byte buff[] = {(byte) 0xDF, 0x13, 0x00, 0x11, (byte) 0xFD};
+        target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+        //调用蓝牙服务的写特征值方法实现发送数据
+        mBluetoothLeService.writeCharacteristic(target_chara);
+        finish();
+    }
+
+    /**
+     * 向上
+     */
+    private void top(){
+        if(isConnect){
+            byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x11, (byte) 0xFD};
+            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+            //调用蓝牙服务的写特征值方法实现发送数据
+            mBluetoothLeService.writeCharacteristic(target_chara);
+        }else {
+            Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 向下
+     */
+    private void bottom(){
+        if(isConnect){
+            byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x12, (byte) 0xFD};
+            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+            //调用蓝牙服务的写特征值方法实现发送数据
+            mBluetoothLeService.writeCharacteristic(target_chara);
+        }else {
+            Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

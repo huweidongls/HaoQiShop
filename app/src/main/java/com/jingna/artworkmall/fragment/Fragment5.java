@@ -155,8 +155,9 @@ public class Fragment5 extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.rl_msg:
-                intent.setClass(getContext(), MessageActivity.class);
-                startActivity(intent);
+                ToastUtil.showShort(getContext(), "暂未开通");
+//                intent.setClass(getContext(), MessageActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.rl_address:
                 intent.setClass(getContext(), AddressActivity.class);

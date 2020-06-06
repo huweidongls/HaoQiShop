@@ -21,7 +21,7 @@
         </RelativeLayout>
 
         <TextView
-            android:text="平台币明细"
+            android:text="积分明细"
             style="@style/tv_top_title_gray" />
 
     </RelativeLayout>

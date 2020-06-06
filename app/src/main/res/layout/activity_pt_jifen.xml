@@ -22,7 +22,7 @@
         </RelativeLayout>
 
         <TextView
-            android:text="平台币"
+            android:text="积分"
             style="@style/tv_top_title_white" />
 
         <RelativeLayout
@@ -55,7 +55,7 @@
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black_333333"
         android:textSize="17sp"
-        android:text="我的平台币"
+        android:text="我的积分"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

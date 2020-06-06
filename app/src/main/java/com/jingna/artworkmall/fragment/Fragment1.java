@@ -31,6 +31,7 @@ import com.jingna.artworkmall.page.GonggaoListActivity;
 import com.jingna.artworkmall.page.LayaControlActivity;
 import com.jingna.artworkmall.page.YouxuanShopActivity;
 import com.jingna.artworkmall.util.Logger;
+import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.ToastUtil;
 import com.jingna.artworkmall.util.ViseUtil;
 import com.jingna.artworkmall.widget.ScrollTextView;
@@ -162,6 +163,8 @@ public class Fragment1 extends BaseFragment {
 
     private void initData() {
 
+        Logger.e("123123", SpUtils.getLanyaTime(getContext())+"");
+
         Map<String, String> map = new LinkedHashMap<>();
         map.put("type", "0");
         ViseUtil.Get(getContext(), NetUrl.IndexPageApifindBannerCategory, map, new ViseUtil.ViseListener() {
@@ -210,39 +213,47 @@ public class Fragment1 extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ll_gonggao, R.id.iv_saomiao, R.id.iv_youxuan})
+    @OnClick({R.id.ll_gonggao, R.id.iv_saomiao, R.id.iv_youxuan, R.id.rl_kefu})
     public void onClick(View view) {
         final Intent intent = new Intent();
         switch (view.getId()) {
+            case R.id.rl_kefu:
+                ToastUtil.showShort(getContext(), "暂未开通");
+                break;
             case R.id.ll_gonggao:
                 intent.setClass(getContext(), GonggaoListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.iv_saomiao:
-                if (turnOnBluetooth()) {
-                    Toast tst = Toast.makeText(getContext(), "打开蓝牙成功", Toast.LENGTH_SHORT);
-                    tst.show();
-                    PermissionManager.instance().request(getActivity(), new OnPermissionCallback() {
-                        @Override
-                        public void onRequestAllow(String permissionName) {
-                            intent.setClass(getContext(), CaptureActivity.class);
-                            startActivityForResult(intent, REQUEST_CODE);
-                        }
+                if(!SpUtils.getLanyaTime(getContext())){
+                    if (turnOnBluetooth()) {
+                        Toast tst = Toast.makeText(getContext(), "打开蓝牙成功", Toast.LENGTH_SHORT);
+                        tst.show();
+                        PermissionManager.instance().request(getActivity(), new OnPermissionCallback() {
+                            @Override
+                            public void onRequestAllow(String permissionName) {
+                                intent.setClass(getContext(), CaptureActivity.class);
+                                startActivityForResult(intent, REQUEST_CODE);
+                            }
 
-                        @Override
-                        public void onRequestRefuse(String permissionName) {
-                            ToastUtil.showShort(getContext(), "请开启定位权限");
-                        }
+                            @Override
+                            public void onRequestRefuse(String permissionName) {
+                                ToastUtil.showShort(getContext(), "请开启定位权限");
+                            }
 
-                        @Override
-                        public void onRequestNoAsk(String permissionName) {
-                            intent.setClass(getContext(), CaptureActivity.class);
-                            startActivityForResult(intent, REQUEST_CODE);
-                        }
-                    }, Manifest.permission.ACCESS_FINE_LOCATION);
-                } else {
-                    Toast tst = Toast.makeText(getContext(), "打开蓝牙失败！！", Toast.LENGTH_SHORT);
-                    tst.show();
+                            @Override
+                            public void onRequestNoAsk(String permissionName) {
+                                intent.setClass(getContext(), CaptureActivity.class);
+                                startActivityForResult(intent, REQUEST_CODE);
+                            }
+                        }, Manifest.permission.ACCESS_FINE_LOCATION);
+                    } else {
+                        Toast tst = Toast.makeText(getContext(), "打开蓝牙失败！！", Toast.LENGTH_SHORT);
+                        tst.show();
+                    }
+                }else {
+                    intent.setClass(getContext(), LayaControlActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.iv_youxuan:

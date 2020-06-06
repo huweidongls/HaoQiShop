@@ -10,7 +10,7 @@ public class AppOrdergetByCardBean {
 
     /**
      * status : 200
-     * data : {"id":"1577763381240","addresPhone":"13236636363","addresUname":"佛祖","idNumber":"69886888","orderStatus":"1","paymentMode":"平台币支付","createTime":"2019-12-31 11:36:12","orderRealPrice":113,"couponPrice":10,"list":[],"electronicCode":"KFISNASJSASF","goodsName":"测试商品"}
+     * data : {"id":"1577763381240","addresPhone":"13236636363","addresUname":"佛祖","idNumber":"69886888","orderStatus":"1","paymentMode":"积分支付","createTime":"2019-12-31 11:36:12","orderRealPrice":113,"couponPrice":10,"list":[],"electronicCode":"KFISNASJSASF","goodsName":"测试商品"}
      */
 
     private String status;
@@ -39,7 +39,7 @@ public class AppOrdergetByCardBean {
          * addresUname : 佛祖
          * idNumber : 69886888
          * orderStatus : 1
-         * paymentMode : 平台币支付
+         * paymentMode : 积分支付
          * createTime : 2019-12-31 11:36:12
          * orderRealPrice : 113
          * couponPrice : 10

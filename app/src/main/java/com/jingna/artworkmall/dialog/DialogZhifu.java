@@ -62,7 +62,7 @@ public class DialogZhifu extends Dialog {
         tvSure = view.findViewById(R.id.tv_sure);
         etPwd = view.findViewById(R.id.et_pwd);
 
-        tvYue.setText("平台币余额¥"+ StringUtils.roundByScale(yue, 2));
+        tvYue.setText("积分余额¥"+ StringUtils.roundByScale(yue, 2));
         tvSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

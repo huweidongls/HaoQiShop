@@ -137,7 +137,7 @@ public class SubmitYuyueActivity extends BaseActivity {
                         time = StringUtils.dateToString(date);
                         tvTime.setText(time);
                     }
-                }).setType(new boolean[]{true, true, true, true, true, true})// 默认全部显示
+                }).setType(new boolean[]{true, true, true, true, true, false})// 默认全部显示
                         .setCancelText("取消")//取消按钮文字
                         .setSubmitText("确认")//确认按钮文字
                         .setTitleSize(20)//标题文字大小
