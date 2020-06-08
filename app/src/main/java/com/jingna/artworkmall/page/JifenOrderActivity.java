@@ -45,11 +45,14 @@ public class JifenOrderActivity extends BaseActivity {
     private List<Fragment> fragmentList;
     private ArrayList<String> mTitleDataList;
 
+    private int position = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jifen_order);
 
+        position = getIntent().getIntExtra("position", 0);
         mFragmentManager = getSupportFragmentManager();
         StatusBarUtil.setStatusBarColor(JifenOrderActivity.this, getResources().getColor(R.color.white_ffffff));
         //一般的手机的状态栏文字和图标都是白色的, 可如果你的应用也是纯白色的, 或导致状态栏文字看不清
@@ -112,6 +115,7 @@ public class JifenOrderActivity extends BaseActivity {
         });
         magicIndicator.setNavigator(commonNavigator);
         ViewPagerHelper.bind(magicIndicator, mViewPager);
+        mViewPager.setCurrentItem(position);
 
     }
 

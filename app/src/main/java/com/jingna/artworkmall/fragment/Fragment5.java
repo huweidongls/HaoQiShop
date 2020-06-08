@@ -223,18 +223,21 @@ public class Fragment5 extends BaseFragment {
                 }
                 break;
             case R.id.rl_all_order:
-                intent.setClass(getContext(), TijianOrderActivity.class);
+//                intent.setClass(getContext(), TijianOrderActivity.class);
+                intent.setClass(getContext(), JifenOrderActivity.class);
                 intent.putExtra("position", 0);
                 startActivity(intent);
                 break;
             case R.id.rl_daishiyong:
-                intent.setClass(getContext(), TijianOrderActivity.class);
+//                intent.setClass(getContext(), TijianOrderActivity.class);
+                intent.setClass(getContext(), JifenOrderActivity.class);
                 intent.putExtra("position", 1);
                 startActivity(intent);
                 break;
             case R.id.rl_yishiyong:
-                intent.setClass(getContext(), TijianOrderActivity.class);
-                intent.putExtra("position", 2);
+//                intent.setClass(getContext(), TijianOrderActivity.class);
+                intent.setClass(getContext(), JifenOrderActivity.class);
+                intent.putExtra("position", 3);
                 startActivity(intent);
                 break;
             case R.id.rl_about:

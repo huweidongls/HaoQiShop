@@ -105,37 +105,38 @@ public class FragmentYy extends LazyFragment {
         Intent intent = new Intent();
         switch (view.getId()){
             case R.id.ll_yuyue:
-                intent.setClass(getContext(), SubmitYuyueActivity.class);
-                startActivity(intent);
+                ToastUtil.showShort(getContext(), "当前城市暂未开通");
+//                intent.setClass(getContext(), SubmitYuyueActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.ll_loc:
-                LatLng ll = new LatLng(lat,
-                        lng);
-                MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
-                baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
-                Map<String, String> map = new LinkedHashMap<>();
-                map.put("lat", lat+"");
-                map.put("lng", lng+"");
-                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
-                    @Override
-                    public void onReturn(String s) {
-                        Logger.e("123123", s);
-                        Gson gson = new Gson();
-                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
-                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
-                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
-                        //构建Marker图标
-                        BitmapDescriptor bitmap = BitmapDescriptorFactory
-                                .fromResource(R.mipmap.icon020);
-                        for (int i = 0; i<list.size(); i++){
-                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
-                        }
-                        baiduMap.addOverlays(options);
-                    }
-                });
-
+                ToastUtil.showShort(getContext(), "当前城市暂未开通");
+//                LatLng ll = new LatLng(lat,
+//                        lng);
+//                MapStatus.Builder builder = new MapStatus.Builder();
+//                builder.target(ll).zoom(18.0f);
+//                baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+//
+//                Map<String, String> map = new LinkedHashMap<>();
+//                map.put("lat", lat+"");
+//                map.put("lng", lng+"");
+//                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
+//                    @Override
+//                    public void onReturn(String s) {
+//                        Logger.e("123123", s);
+//                        Gson gson = new Gson();
+//                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
+//                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
+//                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+//                        //构建Marker图标
+//                        BitmapDescriptor bitmap = BitmapDescriptorFactory
+//                                .fromResource(R.mipmap.icon020);
+//                        for (int i = 0; i<list.size(); i++){
+//                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
+//                        }
+//                        baiduMap.addOverlays(options);
+//                    }
+//                });
                 break;
         }
     }
@@ -210,26 +211,26 @@ public class FragmentYy extends LazyFragment {
                 builder.target(ll).zoom(18.0f);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 
-                Map<String, String> map = new LinkedHashMap<>();
-                map.put("lat", bdLocation.getLatitude()+"");
-                map.put("lng", bdLocation.getLongitude()+"");
-                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
-                    @Override
-                    public void onReturn(String s) {
-                        Logger.e("123123", s);
-                        Gson gson = new Gson();
-                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
-                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
-                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
-                        //构建Marker图标
-                        BitmapDescriptor bitmap = BitmapDescriptorFactory
-                                .fromResource(R.mipmap.icon020);
-                        for (int i = 0; i<list.size(); i++){
-                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
-                        }
-                        baiduMap.addOverlays(options);
-                    }
-                });
+//                Map<String, String> map = new LinkedHashMap<>();
+//                map.put("lat", bdLocation.getLatitude()+"");
+//                map.put("lng", bdLocation.getLongitude()+"");
+//                ViseUtil.Get(getContext(), NetUrl.AppCooperativeMerchantSetLatLng, map, new ViseUtil.ViseListener() {
+//                    @Override
+//                    public void onReturn(String s) {
+//                        Logger.e("123123", s);
+//                        Gson gson = new Gson();
+//                        AppCooperativeMerchantSetLatLngBean bean = gson.fromJson(s, AppCooperativeMerchantSetLatLngBean.class);
+//                        List<AppCooperativeMerchantSetLatLngBean.DataBean> list = bean.getData();
+//                        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+//                        //构建Marker图标
+//                        BitmapDescriptor bitmap = BitmapDescriptorFactory
+//                                .fromResource(R.mipmap.icon020);
+//                        for (int i = 0; i<list.size(); i++){
+//                            options.add(new MarkerOptions().position(new LatLng(Double.valueOf(list.get(i).getLat()), Double.valueOf(list.get(i).getLng()))).icon(bitmap));
+//                        }
+//                        baiduMap.addOverlays(options);
+//                    }
+//                });
 
             }
 

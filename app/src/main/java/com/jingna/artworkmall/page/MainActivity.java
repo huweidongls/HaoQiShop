@@ -122,8 +122,8 @@ public class MainActivity extends BaseActivity {
                             String path = Environment.getExternalStorageDirectory().getAbsolutePath();
                             ViseHttp.DOWNLOAD(downloadUrl)
                                     .setRootName(path)
-                                    .setDirName("sls")
-                                    .setFileName("sls.apk")
+                                    .setDirName("haoqi")
+                                    .setFileName("haoqi.apk")
                                     .request(new ACallback<DownProgress>() {
                                         @Override
                                         public void onSuccess(DownProgress data) {
