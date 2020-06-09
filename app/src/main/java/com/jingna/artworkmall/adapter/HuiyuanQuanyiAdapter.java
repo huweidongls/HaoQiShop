@@ -22,9 +22,11 @@ public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdap
 
     private Context context;
     private List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> data;
+    private ClickListener listener;
 
-    public HuiyuanQuanyiAdapter(List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> data) {
+    public HuiyuanQuanyiAdapter(List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> data, ClickListener listener) {
         this.data = data;
+        this.listener = listener;
     }
 
     @Override
@@ -36,20 +38,18 @@ public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.tvTitle.setText(data.get(position).getShopName());
         holder.tvTime.setText(data.get(position).getStopTime());
         holder.tvCs.setText(data.get(position).getShopCs()+"");
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setClass(context, HuiyuanQuanyiDetailsActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(position);
+            }
+        });
 
     }
 
@@ -70,6 +70,10 @@ public class HuiyuanQuanyiAdapter extends RecyclerView.Adapter<HuiyuanQuanyiAdap
             tvTime = itemView.findViewById(R.id.tv_time);
             tvCs = itemView.findViewById(R.id.tv_cs);
         }
+    }
+
+    public interface ClickListener{
+        void onClick(int pos);
     }
 
 }

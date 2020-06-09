@@ -7,9 +7,9 @@ package com.jingna.artworkmall.net;
 public class NetUrl {
 
 //    public static final String BASE_URL = "http://192.168.1.102:80/";//http://192.168.2.211:8080/
-//    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
+    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
-    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
     public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/
 //    public static final String H5BASE_URL = "http://slsh5.5ijiaoyu.cn";//http://192.168.2.211:8080/
     public static final String MemUsersendMessage = "/MemUser/sendMessage";//发送验证码
@@ -68,5 +68,6 @@ public class NetUrl {
     public static final String AppMakeAnapPointmentOrderControllerSubmitMakeAnapPointment = "/AppMakeAnapPointmentOrderController/SubmitMakeAnapPointment";//APP提交预约订单
     public static final String AppMakeAnapPointmentOrderControlleryuYueList = "/AppMakeAnapPointmentOrderController/yuYueList";//app预约列表
     public static final String AppMakeAnapPointmentOrderControlleryuYueGetOne = "/AppMakeAnapPointmentOrderController/yuYueGetOne";//App预约详情
+    public static final String AppSaoMasaoMa = "/AppSaoMa/saoMa";//app扫码
 
 }

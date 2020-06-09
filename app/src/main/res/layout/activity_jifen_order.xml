@@ -22,7 +22,7 @@
         </RelativeLayout>
 
         <TextView
-            android:text="优选订单"
+            android:text="我的订单"
             style="@style/tv_top_title_white" />
 
     </RelativeLayout>

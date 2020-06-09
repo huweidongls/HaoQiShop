@@ -28,10 +28,12 @@ import com.jingna.artworkmall.card.CardFxPagerAdapter;
 import com.jingna.artworkmall.card.ShadowTransformer;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.page.GonggaoListActivity;
+import com.jingna.artworkmall.page.HuiyuanQuanyiActivity;
 import com.jingna.artworkmall.page.LayaControlActivity;
 import com.jingna.artworkmall.page.YouxuanShopActivity;
 import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
+import com.jingna.artworkmall.util.StringUtils;
 import com.jingna.artworkmall.util.ToastUtil;
 import com.jingna.artworkmall.util.ViseUtil;
 import com.jingna.artworkmall.widget.ScrollTextView;
@@ -86,6 +88,8 @@ public class Fragment1 extends BaseFragment {
     private List<IndexPageApiqueryCardBean.DataBean> mList;
 
     private int REQUEST_CODE = 1000;
+
+    private String qyId = "";
 
     @Nullable
     @Override
@@ -225,6 +229,7 @@ public class Fragment1 extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.iv_saomiao:
+//                ToastUtil.showShort(getContext(), "暂未开通");
                 if(!SpUtils.getLanyaTime(getContext())){
                     if (turnOnBluetooth()) {
                         Toast tst = Toast.makeText(getContext(), "打开蓝牙成功", Toast.LENGTH_SHORT);
@@ -232,8 +237,8 @@ public class Fragment1 extends BaseFragment {
                         PermissionManager.instance().request(getActivity(), new OnPermissionCallback() {
                             @Override
                             public void onRequestAllow(String permissionName) {
-                                intent.setClass(getContext(), CaptureActivity.class);
-                                startActivityForResult(intent, REQUEST_CODE);
+                                intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                                startActivityForResult(intent, 10002);
                             }
 
                             @Override
@@ -243,8 +248,8 @@ public class Fragment1 extends BaseFragment {
 
                             @Override
                             public void onRequestNoAsk(String permissionName) {
-                                intent.setClass(getContext(), CaptureActivity.class);
-                                startActivityForResult(intent, REQUEST_CODE);
+                                intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                                startActivityForResult(intent, 10002);
                             }
                         }, Manifest.permission.ACCESS_FINE_LOCATION);
                     } else {
@@ -283,6 +288,19 @@ public class Fragment1 extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         /**
+         * 处理选择权益卡
+         */
+        if(requestCode == 10002&&resultCode == 10003){
+            if(data != null){
+                qyId = data.getStringExtra("qyid");
+                if(!StringUtils.isEmpty(qyId)){
+                    Intent intent = new Intent();
+                    intent.setClass(getContext(), CaptureActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+            }
+        }
+        /**
          * 处理二维码扫描结果
          */
         if (requestCode == REQUEST_CODE) {
@@ -302,16 +320,19 @@ public class Fragment1 extends BaseFragment {
                         String s2 = ss[1];
                         String s3 = ss[2];
                         String s4 = ss[3];
+                        String code = s1.substring(2, s1.length());
                         String name = s3.substring(2, s3.length());
                         String address = s2.substring(2, s2.length());
                         String a = address.replaceAll("(.{2})", "$1:");//加入：
                         String mac = a.substring(0, a.length() - 1);
-                        Logger.e("123123", "name--" + name + "--mac--" + mac);
+                        Logger.e("123123", "code--" + code);
                         Intent intent = new Intent(getContext(),
                                 LayaControlActivity.class);
                         intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_NAME, name);
                         intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_ADDRESS, mac);
                         intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_RSSI, -42 + "");
+                        intent.putExtra("code", code);
+                        intent.putExtra("qyid", qyId);
                         startActivity(intent);
                     } else {
                         ToastUtil.showShort(getContext(), "无效的二维码");

@@ -1,6 +1,7 @@
 package com.jingna.artworkmall.page;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,7 +79,15 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
                 }
 
                 mList = bean.getData().getList();
-                adapter = new HuiyuanQuanyiAdapter(mList);
+                adapter = new HuiyuanQuanyiAdapter(mList, new HuiyuanQuanyiAdapter.ClickListener() {
+                    @Override
+                    public void onClick(int pos) {
+                        Intent intent = new Intent();
+                        intent.putExtra("qyid", mList.get(pos).getId()+"");
+                        setResult(10003, intent);
+                        finish();
+                    }
+                });
                 LinearLayoutManager manager = new LinearLayoutManager(context);
                 manager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(manager);

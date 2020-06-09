@@ -91,11 +91,11 @@
                             android:layout_height="13dp"/>
 
                         <TextView
+                            android:id="@+id/tv_sf"
                             android:layout_marginLeft="13dp"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/white_ffffff"
                             android:textSize="12sp"
-                            android:text="普通用户"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="17dp"
-                    android:text="优选订单"
+                    android:text="我的订单"
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
@@ -399,6 +399,7 @@
                 </RelativeLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="11dp"
@@ -406,6 +407,7 @@
                     android:background="@color/line" />
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/rl_jifen_order"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"

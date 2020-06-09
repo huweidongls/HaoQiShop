@@ -36,6 +36,7 @@ import com.jingna.artworkmall.page.TijianOrderActivity;
 import com.jingna.artworkmall.page.YinsiActivity;
 import com.jingna.artworkmall.page.YqmActivity;
 import com.jingna.artworkmall.util.GlideUtils;
+import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StringUtils;
 import com.jingna.artworkmall.util.ToastUtil;
@@ -71,6 +72,8 @@ public class Fragment5 extends BaseFragment {
     ProgressBar progressBar;
     @BindView(R.id.tv_huoyuedu)
     TextView tvHuoyuedu;
+    @BindView(R.id.tv_sf)
+    TextView tvSf;
 
     private int isSignIn = 0;
     private int dangqian = 0;
@@ -106,6 +109,7 @@ public class Fragment5 extends BaseFragment {
             ViseUtil.Get(getContext(), NetUrl.MemUsergetByInformation, map, new ViseUtil.ViseListener() {
                 @Override
                 public void onReturn(String s) {
+                    Logger.e("123123", s);
                     Gson gson = new Gson();
                     MemUsergetByInformationBean bean = gson.fromJson(s, MemUsergetByInformationBean.class);
                     tvNickname.setText(bean.getData().getMemName());
@@ -113,11 +117,14 @@ public class Fragment5 extends BaseFragment {
                     isSignIn = bean.getData().getIsSignIn();
                     tvPtb.setText(StringUtils.roundByScale(bean.getData().getMemIntegral(), 2));
                     tvCouponsNum.setText(bean.getData().getCouponNum()+"");
-                    int shangxian = bean.getData().getActivityLevelNum();
-                    dangqian = bean.getData().getMemberUserLiveness();
-                    progressBar.setMax(shangxian);
-                    progressBar.setProgress(dangqian);
-                    tvHuoyuedu.setText(dangqian+"");
+                    int sf = bean.getData().getSfStatus();
+                    if(sf == 1){
+                        tvSf.setText("vip");
+                    }else if(sf == 2){
+                        tvSf.setText("区域经理");
+                    }else if(sf == 3){
+                        tvSf.setText("大区经理");
+                    }
                 }
             });
         }

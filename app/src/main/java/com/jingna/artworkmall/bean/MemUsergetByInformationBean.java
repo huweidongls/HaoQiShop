@@ -1,5 +1,7 @@
 package com.jingna.artworkmall.bean;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2020/1/2.
  */
@@ -8,7 +10,7 @@ public class MemUsergetByInformationBean {
 
     /**
      * status : 200
-     * data : {"id":3,"memName":"18686817319","headPhoto":"upload/headPhoto/ceshitupian.jpg","memIntegral":99997267,"couponNum":3,"activityLevelNum":1000,"memberUserLiveness":150,"isSignIn":1}
+     * data : {"id":220,"memName":"IVLZ_18686817319","headPhoto":"upload/headPhoto/ceshitupian.jpg","memIntegral":870100,"memberUserInfos":[],"platformBalances":[],"verificationSheetRecords":[],"couponNum":2,"isSignIn":0,"sfStatus":1,"csdlStatus":0,"isHhr":0}
      */
 
     private String status;
@@ -32,24 +34,32 @@ public class MemUsergetByInformationBean {
 
     public static class DataBean {
         /**
-         * id : 3
-         * memName : 18686817319
+         * id : 220
+         * memName : IVLZ_18686817319
          * headPhoto : upload/headPhoto/ceshitupian.jpg
-         * memIntegral : 99997267
-         * couponNum : 3
-         * activityLevelNum : 1000
-         * memberUserLiveness : 150
-         * isSignIn : 1
+         * memIntegral : 870100
+         * memberUserInfos : []
+         * platformBalances : []
+         * verificationSheetRecords : []
+         * couponNum : 2
+         * isSignIn : 0
+         * sfStatus : 1
+         * csdlStatus : 0
+         * isHhr : 0
          */
 
         private int id;
         private String memName;
         private String headPhoto;
-        private double memIntegral;
+        private int memIntegral;
         private int couponNum;
-        private int activityLevelNum;
-        private int memberUserLiveness;
         private int isSignIn;
+        private int sfStatus;
+        private int csdlStatus;
+        private int isHhr;
+        private List<?> memberUserInfos;
+        private List<?> platformBalances;
+        private List<?> verificationSheetRecords;
 
         public int getId() {
             return id;
@@ -75,11 +85,11 @@ public class MemUsergetByInformationBean {
             this.headPhoto = headPhoto;
         }
 
-        public double getMemIntegral() {
+        public int getMemIntegral() {
             return memIntegral;
         }
 
-        public void setMemIntegral(double memIntegral) {
+        public void setMemIntegral(int memIntegral) {
             this.memIntegral = memIntegral;
         }
 
@@ -91,28 +101,60 @@ public class MemUsergetByInformationBean {
             this.couponNum = couponNum;
         }
 
-        public int getActivityLevelNum() {
-            return activityLevelNum;
-        }
-
-        public void setActivityLevelNum(int activityLevelNum) {
-            this.activityLevelNum = activityLevelNum;
-        }
-
-        public int getMemberUserLiveness() {
-            return memberUserLiveness;
-        }
-
-        public void setMemberUserLiveness(int memberUserLiveness) {
-            this.memberUserLiveness = memberUserLiveness;
-        }
-
         public int getIsSignIn() {
             return isSignIn;
         }
 
         public void setIsSignIn(int isSignIn) {
             this.isSignIn = isSignIn;
+        }
+
+        public int getSfStatus() {
+            return sfStatus;
+        }
+
+        public void setSfStatus(int sfStatus) {
+            this.sfStatus = sfStatus;
+        }
+
+        public int getCsdlStatus() {
+            return csdlStatus;
+        }
+
+        public void setCsdlStatus(int csdlStatus) {
+            this.csdlStatus = csdlStatus;
+        }
+
+        public int getIsHhr() {
+            return isHhr;
+        }
+
+        public void setIsHhr(int isHhr) {
+            this.isHhr = isHhr;
+        }
+
+        public List<?> getMemberUserInfos() {
+            return memberUserInfos;
+        }
+
+        public void setMemberUserInfos(List<?> memberUserInfos) {
+            this.memberUserInfos = memberUserInfos;
+        }
+
+        public List<?> getPlatformBalances() {
+            return platformBalances;
+        }
+
+        public void setPlatformBalances(List<?> platformBalances) {
+            this.platformBalances = platformBalances;
+        }
+
+        public List<?> getVerificationSheetRecords() {
+            return verificationSheetRecords;
+        }
+
+        public void setVerificationSheetRecords(List<?> verificationSheetRecords) {
+            this.verificationSheetRecords = verificationSheetRecords;
         }
     }
 }

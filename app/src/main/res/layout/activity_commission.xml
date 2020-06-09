@@ -74,7 +74,7 @@
                         android:layout_marginTop="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2小时内到账"
+                        android:text="3~5个工作日到账"
                         android:textColor="#232325"
                         android:textSize="14sp" />
 

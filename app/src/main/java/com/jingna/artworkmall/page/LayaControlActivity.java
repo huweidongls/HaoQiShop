@@ -28,17 +28,21 @@ import android.widget.Toast;
 import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.dialog.DialogCustom;
+import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.service.BluetoothLeService;
 import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtils;
 import com.jingna.artworkmall.util.Utils;
+import com.jingna.artworkmall.util.ViseUtil;
 import com.jingna.artworkmall.widget.LongClickButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,6 +64,9 @@ public class LayaControlActivity extends BaseActivity {
     LongClickButton btnBottom;
     @BindView(R.id.btn_start)
     Button btnStart;
+
+    private String code = "";
+    private String qyId = "";
 
     private boolean isPause = true;
 
@@ -87,6 +94,7 @@ public class LayaControlActivity extends BaseActivity {
     private static BluetoothGattCharacteristic target_chara = null;
 
     private boolean isConnect = false;
+    private boolean isFirst = true;
 
     private Handler mhandler = new Handler();
     private Handler myHandler = new Handler() {
@@ -101,6 +109,19 @@ public class LayaControlActivity extends BaseActivity {
                         tvState.setText("蓝牙已连接");
                         isConnect = true;
                         SpUtils.setLanyaTime(context, true);
+                        if(isFirst){
+                            isFirst = false;
+                            Map<String, String> map = new LinkedHashMap<>();
+                            map.put("memberId", SpUtils.getUserId(context));
+                            map.put("sbCode", code);
+                            map.put("qyId", qyId);
+                            ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
+                                @Override
+                                public void onReturn(String s) {
+                                    Logger.e("123123", s);
+                                }
+                            });
+                        }
                     }
                     if(state.equals("disconnected")){
                         tvState.setText("蓝牙未连接");
@@ -130,6 +151,8 @@ public class LayaControlActivity extends BaseActivity {
         mDeviceName = b.getString(EXTRAS_DEVICE_NAME);
         mDeviceAddress = b.getString(EXTRAS_DEVICE_ADDRESS);
         mRssi = b.getString(EXTRAS_DEVICE_RSSI);
+        code = b.getString("code");
+        qyId = b.getString("qyid");
 
 		/* 启动蓝牙service */
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
