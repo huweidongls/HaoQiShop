@@ -35,6 +35,7 @@ import com.jingna.artworkmall.fragment.Fragment5;
 import com.jingna.artworkmall.fragment.FragmentYy;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.util.Logger;
+import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtil;
 import com.jingna.artworkmall.util.StatusBarUtils;
 import com.jingna.artworkmall.util.ToastUtil;
@@ -71,6 +72,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         StatusBarUtil.setStatusBarColor(MainActivity.this, getResources().getColor(R.color.theme));
+        SpUtils.setLanyaTime(context, false);
         PermissionManager.instance().request(this, new OnPermissionCallback() {
                     @Override
                     public void onRequestAllow(String permissionName) {

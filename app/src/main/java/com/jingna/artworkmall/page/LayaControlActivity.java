@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -33,6 +34,7 @@ import com.jingna.artworkmall.service.BluetoothLeService;
 import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtils;
+import com.jingna.artworkmall.util.ToastUtil;
 import com.jingna.artworkmall.util.Utils;
 import com.jingna.artworkmall.util.ViseUtil;
 import com.jingna.artworkmall.widget.LongClickButton;
@@ -95,6 +97,10 @@ public class LayaControlActivity extends BaseActivity {
 
     private boolean isConnect = false;
     private boolean isFirst = true;
+    private boolean isStart = false;
+
+    private boolean isTop = false;
+    private boolean isBottom = false;
 
     private Handler mhandler = new Handler();
     private Handler myHandler = new Handler() {
@@ -109,19 +115,6 @@ public class LayaControlActivity extends BaseActivity {
                         tvState.setText("蓝牙已连接");
                         isConnect = true;
                         SpUtils.setLanyaTime(context, true);
-                        if(isFirst){
-                            isFirst = false;
-                            Map<String, String> map = new LinkedHashMap<>();
-                            map.put("memberId", SpUtils.getUserId(context));
-                            map.put("sbCode", code);
-                            map.put("qyId", qyId);
-                            ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
-                                @Override
-                                public void onReturn(String s) {
-                                    Logger.e("123123", s);
-                                }
-                            });
-                        }
                     }
                     if(state.equals("disconnected")){
                         tvState.setText("蓝牙未连接");
@@ -154,9 +147,20 @@ public class LayaControlActivity extends BaseActivity {
         code = b.getString("code");
         qyId = b.getString("qyid");
 
-		/* 启动蓝牙service */
-        Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
-        bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+        DialogCustom dialogCustom = new DialogCustom(context, "连接后即扣除次数，是否连接", new DialogCustom.OnYesListener() {
+            @Override
+            public void onYes() {
+                /* 启动蓝牙service */
+                Intent gattServiceIntent = new Intent(LayaControlActivity.this, BluetoothLeService.class);
+                bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+            }
+
+            @Override
+            public void onCancel() {
+                LayaControlActivity.this.finish();
+            }
+        });
+        dialogCustom.show();
 
     }
 
@@ -165,7 +169,7 @@ public class LayaControlActivity extends BaseActivity {
         btnTop.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
             @Override
             public void repeatAction() {
-                if(!isPause){
+                if(isPause){
                     top();
                 }else {
                     Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
@@ -175,7 +179,7 @@ public class LayaControlActivity extends BaseActivity {
         btnTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isPause){
+                if(isPause){
                     top();
                 }else {
                     Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
@@ -185,7 +189,7 @@ public class LayaControlActivity extends BaseActivity {
         btnBottom.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
             @Override
             public void repeatAction() {
-                if(!isPause){
+                if(isPause){
                     bottom();
                 }else {
                     Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
@@ -195,7 +199,7 @@ public class LayaControlActivity extends BaseActivity {
         btnBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isPause){
+                if(isPause){
                     bottom();
                 }else {
                     Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
@@ -211,7 +215,9 @@ public class LayaControlActivity extends BaseActivity {
         //解除广播接收器
         unregisterReceiver(mGattUpdateReceiver);
         mBluetoothLeService = null;
-        unbindService(mServiceConnection);
+        if(isConnect){
+            unbindService(mServiceConnection);
+        }
         SpUtils.setLanyaTime(context, false);
     }
 
@@ -313,9 +319,11 @@ public class LayaControlActivity extends BaseActivity {
 
         if(Arrays.equals(data, top)){
             Toast.makeText(context, "已到达上限", Toast.LENGTH_SHORT).show();
+            isTop = true;
         }
         if(Arrays.equals(data, bottom)){
             Toast.makeText(context, "已到达下限", Toast.LENGTH_SHORT).show();
+            isBottom = true;
         }
 
     }
@@ -413,6 +421,18 @@ public class LayaControlActivity extends BaseActivity {
                     mBluetoothLeService.setCharacteristicNotification(
                             gattCharacteristic, true);
                     target_chara = gattCharacteristic;
+                    if(isFirst){
+                        Map<String, String> map = new LinkedHashMap<>();
+                        map.put("memberId", SpUtils.getUserId(context));
+                        map.put("sbCode", code);
+                        map.put("qyId", qyId);
+                        ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
+                            @Override
+                            public void onReturn(String s) {
+                                start();
+                            }
+                        });
+                    }
                     // 设置数据内容
                     // 往蓝牙模块写入数据
                     // mBluetoothLeService.writeCharacteristic(gattCharacteristic);
@@ -466,14 +486,18 @@ public class LayaControlActivity extends BaseActivity {
             case R.id.btn_pause:
                 if(isConnect){
                     if (Utils.isFastClick()) {
-                        if(isPause){
-                            isPause = false;
-                            pause();
-                            btnPause.setText("继续");
+                        if(isStart){
+                            if(isPause){
+                                isPause = false;
+                                startService();
+                                btnPause.setText("暂停");
+                            }else {
+                                isPause = true;
+                                pause();
+                                btnPause.setText("继续");
+                            }
                         }else {
-                            isPause = true;
-                            startService();
-                            btnPause.setText("暂停");
+                            ToastUtil.showShort(context, "服务未开始，无法暂停");
                         }
                     } else {
                         Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
@@ -485,21 +509,25 @@ public class LayaControlActivity extends BaseActivity {
             case R.id.btn_start:
                 if(isConnect){
                     if (Utils.isFastClick()) {
-                        DialogCustom dialogCustom = new DialogCustom(context, "是否开始连接", new DialogCustom.OnYesListener() {
-                            @Override
-                            public void onYes() {
-                                start();
-                                Timer timer = new Timer();
-                                timer.schedule(new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        startService();
-                                    }
-                                }, 500);
-                                btnStart.setEnabled(false);
-                            }
-                        });
-                        dialogCustom.show();
+                        if(isFirst){
+                            Toast.makeText(this, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
+                        }else {
+                            DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务", new DialogCustom.OnYesListener() {
+                                @Override
+                                public void onYes() {
+                                    startService();
+                                    isStart = true;
+                                    isPause = false;
+                                    btnStart.setEnabled(false);
+                                }
+
+                                @Override
+                                public void onCancel() {
+
+                                }
+                            });
+                            dialogCustom.show();
+                        }
                     } else {
                         Toast.makeText(this, "点击过快", Toast.LENGTH_SHORT).show();
                     }
@@ -514,6 +542,8 @@ public class LayaControlActivity extends BaseActivity {
                             @Override
                             public void onYes() {
                                 if(isPause){
+                                    end();
+                                }else {
                                     pause();
                                     Timer timer = new Timer();
                                     timer.schedule(new TimerTask() {
@@ -522,9 +552,12 @@ public class LayaControlActivity extends BaseActivity {
                                             end();
                                         }
                                     }, 500);
-                                }else {
-                                    end();
                                 }
+                            }
+
+                            @Override
+                            public void onCancel() {
+
                             }
                         });
                         dialogCustom.show();
@@ -558,6 +591,7 @@ public class LayaControlActivity extends BaseActivity {
         target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
         //调用蓝牙服务的写特征值方法实现发送数据
         mBluetoothLeService.writeCharacteristic(target_chara);
+        isFirst = false;
 //        byte buff[] = {(byte) 0xDF, 0x11, 0x00, 0x1E, (byte) 0xFD};
 //        target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
 //        //调用蓝牙服务的写特征值方法实现发送数据
@@ -600,10 +634,15 @@ public class LayaControlActivity extends BaseActivity {
      */
     private void top(){
         if(isConnect){
-            byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x11, (byte) 0xFD};
-            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-            //调用蓝牙服务的写特征值方法实现发送数据
-            mBluetoothLeService.writeCharacteristic(target_chara);
+            if(isTop){
+                Toast.makeText(context, "已到达上限", Toast.LENGTH_SHORT).show();
+            }else {
+                byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x11, (byte) 0xFD};
+                target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+                //调用蓝牙服务的写特征值方法实现发送数据
+                mBluetoothLeService.writeCharacteristic(target_chara);
+                isBottom = false;
+            }
         }else {
             Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
         }
@@ -614,10 +653,15 @@ public class LayaControlActivity extends BaseActivity {
      */
     private void bottom(){
         if(isConnect){
-            byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x12, (byte) 0xFD};
-            target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
-            //调用蓝牙服务的写特征值方法实现发送数据
-            mBluetoothLeService.writeCharacteristic(target_chara);
+            if(isBottom){
+                Toast.makeText(context, "已到达下限", Toast.LENGTH_SHORT).show();
+            }else {
+                byte buff[] = {(byte) 0xDF, 0x12, 0x00, 0x12, (byte) 0xFD};
+                target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
+                //调用蓝牙服务的写特征值方法实现发送数据
+                mBluetoothLeService.writeCharacteristic(target_chara);
+                isTop = false;
+            }
         }else {
             Toast.makeText(this, "蓝牙未连接", Toast.LENGTH_SHORT).show();
         }

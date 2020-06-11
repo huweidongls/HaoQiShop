@@ -50,6 +50,9 @@ import com.vise.xsnow.permission.OnPermissionCallback;
 import com.vise.xsnow.permission.PermissionManager;
 import com.youth.banner.Banner;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -238,6 +241,7 @@ public class Fragment1 extends BaseFragment {
                             @Override
                             public void onRequestAllow(String permissionName) {
                                 intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                                intent.putExtra("type", "0");
                                 startActivityForResult(intent, 10002);
                             }
 
@@ -249,6 +253,7 @@ public class Fragment1 extends BaseFragment {
                             @Override
                             public void onRequestNoAsk(String permissionName) {
                                 intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                                intent.putExtra("type", "0");
                                 startActivityForResult(intent, 10002);
                             }
                         }, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -320,20 +325,40 @@ public class Fragment1 extends BaseFragment {
                         String s2 = ss[1];
                         String s3 = ss[2];
                         String s4 = ss[3];
-                        String code = s1.substring(2, s1.length());
-                        String name = s3.substring(2, s3.length());
+                        final String code = s1.substring(2, s1.length());
+                        final String name = s3.substring(2, s3.length());
                         String address = s2.substring(2, s2.length());
                         String a = address.replaceAll("(.{2})", "$1:");//加入：
-                        String mac = a.substring(0, a.length() - 1);
+                        final String mac = a.substring(0, a.length() - 1);
                         Logger.e("123123", "code--" + code);
-                        Intent intent = new Intent(getContext(),
-                                LayaControlActivity.class);
-                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_NAME, name);
-                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_ADDRESS, mac);
-                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_RSSI, -42 + "");
-                        intent.putExtra("code", code);
-                        intent.putExtra("qyid", qyId);
-                        startActivity(intent);
+
+                        Map<String, String> map = new LinkedHashMap<>();
+                        map.put("sbCode", code);
+                        ViseUtil.Get(getContext(), NetUrl.AppSaoMapdsb, map, new ViseUtil.ViseListener() {
+                            @Override
+                            public void onReturn(String s) {
+                                Logger.e("123123", s);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(s);
+                                    if(jsonObject.optInt("data") == 1){
+                                        Intent intent = new Intent(getContext(),
+                                                LayaControlActivity.class);
+                                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_NAME, name);
+                                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_ADDRESS, mac);
+                                        intent.putExtra(LayaControlActivity.EXTRAS_DEVICE_RSSI, -42 + "");
+                                        intent.putExtra("code", code);
+                                        intent.putExtra("qyid", qyId);
+                                        startActivity(intent);
+                                    }else if(jsonObject.optInt("data") == 2){
+                                        ToastUtil.showShort(getContext(), "非本平台的设备");
+                                    }else if(jsonObject.optInt("data") == 3){
+                                        ToastUtil.showShort(getContext(), "该设备没有绑定商家");
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     } else {
                         ToastUtil.showShort(getContext(), "无效的二维码");
                     }

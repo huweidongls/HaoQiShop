@@ -46,11 +46,14 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
     private HuiyuanQuanyiAdapter adapter;
     private List<AppShopMemberEquityControllerqueryListBean.DataBean.ListBean> mList;
 
+    private String type = "";//0是从首页来
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_huiyuan_quanyi);
 
+        type = getIntent().getStringExtra("type");
         StatusBarUtil.setStatusBar(HuiyuanQuanyiActivity.this, getResources().getColor(R.color.theme));
         ButterKnife.bind(HuiyuanQuanyiActivity.this);
         initData();
@@ -82,10 +85,12 @@ public class HuiyuanQuanyiActivity extends BaseActivity {
                 adapter = new HuiyuanQuanyiAdapter(mList, new HuiyuanQuanyiAdapter.ClickListener() {
                     @Override
                     public void onClick(int pos) {
-                        Intent intent = new Intent();
-                        intent.putExtra("qyid", mList.get(pos).getId()+"");
-                        setResult(10003, intent);
-                        finish();
+                        if(type.equals("0")){
+                            Intent intent = new Intent();
+                            intent.putExtra("qyid", mList.get(pos).getId()+"");
+                            setResult(10003, intent);
+                            finish();
+                        }
                     }
                 });
                 LinearLayoutManager manager = new LinearLayoutManager(context);

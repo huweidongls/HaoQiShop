@@ -168,6 +168,11 @@ public class PersonInformationActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
                 });
                 dialogCustom.show();
                 break;

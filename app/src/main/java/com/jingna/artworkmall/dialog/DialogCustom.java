@@ -54,6 +54,7 @@ public class DialogCustom extends Dialog {
         tvNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listener.onCancel();
                 dismiss();
             }
         });
@@ -69,6 +70,7 @@ public class DialogCustom extends Dialog {
 
     public interface OnYesListener{
         void onYes();
+        void onCancel();
     }
 
 }
