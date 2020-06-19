@@ -169,40 +169,56 @@ public class LayaControlActivity extends BaseActivity {
         btnTop.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
             @Override
             public void repeatAction() {
-                if(isPause){
-                    top();
+                if(isFirst){
+                    Toast.makeText(context, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    if(isPause){
+                        top();
+                    }else {
+                        Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }, 250);
         btnTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isPause){
-                    top();
+                if(isFirst){
+                    Toast.makeText(context, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    if (isPause) {
+                        top();
+                    } else {
+                        Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
         btnBottom.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
             @Override
             public void repeatAction() {
-                if(isPause){
-                    bottom();
+                if(isFirst){
+                    Toast.makeText(context, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    if (isPause) {
+                        bottom();
+                    } else {
+                        Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }, 250);
         btnBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isPause){
-                    bottom();
+                if(isFirst){
+                    Toast.makeText(context, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    if (isPause) {
+                        bottom();
+                    } else {
+                        Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
