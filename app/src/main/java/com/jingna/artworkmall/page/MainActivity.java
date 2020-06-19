@@ -3,7 +3,6 @@ package com.jingna.artworkmall.page;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,14 +10,8 @@ import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jingna.artworkmall.R;
@@ -28,13 +21,10 @@ import com.jingna.artworkmall.bean.VersionBean;
 import com.jingna.artworkmall.dialog.DialogVersion;
 import com.jingna.artworkmall.dialog.ProgressDialog;
 import com.jingna.artworkmall.fragment.Fragment1;
-import com.jingna.artworkmall.fragment.Fragment2;
 import com.jingna.artworkmall.fragment.Fragment3;
-import com.jingna.artworkmall.fragment.Fragment4;
 import com.jingna.artworkmall.fragment.Fragment5;
 import com.jingna.artworkmall.fragment.FragmentYy;
 import com.jingna.artworkmall.net.NetUrl;
-import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtil;
 import com.jingna.artworkmall.util.StatusBarUtils;
@@ -46,6 +36,7 @@ import com.vise.xsnow.http.callback.ACallback;
 import com.vise.xsnow.http.mode.DownProgress;
 import com.vise.xsnow.permission.OnPermissionCallback;
 import com.vise.xsnow.permission.PermissionManager;
+import com.xuexiang.xupdate._XUpdate;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.io.File;
@@ -132,7 +123,7 @@ public class MainActivity extends BaseActivity {
                                             progressDialog.setInfo(data.getFormatStatusString(), data.getPercent());
                                             if (data.isDownComplete()){
                                                 progressDialog.dismiss();
-                                                String appFile = Environment.getExternalStorageDirectory().getAbsolutePath()+"/sls/"+"sls.apk";
+                                                String appFile = Environment.getExternalStorageDirectory().getAbsolutePath()+"/haoqi/"+"haoqi.apk";
                                                 openAPK(appFile);
                                             }
                                         }
@@ -165,21 +156,25 @@ public class MainActivity extends BaseActivity {
      * @param fileSavePath
      */
     private void openAPK(String fileSavePath){
-        File file=new File(Uri.parse(fileSavePath).getPath());
-        String filePath = file.getAbsolutePath();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri data = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//判断版本大于等于7.0
-            // 生成文件的uri，，
-            // 注意 下面参数com.ausee.fileprovider 为apk的包名加上.fileprovider，
-            data = FileProvider.getUriForFile(context, "com.jingna.artworkmall.fileprovider", new File(filePath));
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);// 给目标应用一个临时授权
-        } else {
-            data = Uri.fromFile(file);
-        }
 
-        intent.setDataAndType(data, "application/vnd.android.package-archive");
-        startActivity(intent);
+        File file = new File(fileSavePath);
+        _XUpdate.startInstallApk(context, file); //填写文件所在的路径
+
+//        File file=new File(Uri.parse(fileSavePath).getPath());
+//        String filePath = file.getAbsolutePath();
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        Uri data = null;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//判断版本大于等于7.0
+//            // 生成文件的uri，，
+//            // 注意 下面参数com.ausee.fileprovider 为apk的包名加上.fileprovider，
+//            data = FileProvider.getUriForFile(context, "com.jingna.artworkmall.fileprovider", new File(filePath));
+//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);// 给目标应用一个临时授权
+//        } else {
+//            data = Uri.fromFile(file);
+//        }
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.setDataAndType(data, "application/vnd.android.package-archive");
+//        startActivity(intent);
     }
 
     /**

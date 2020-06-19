@@ -94,6 +94,8 @@ public class Fragment1 extends BaseFragment {
 
     private String qyId = "";
 
+    int REQUEST_ENABLE_BT = 1;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -235,8 +237,8 @@ public class Fragment1 extends BaseFragment {
 //                ToastUtil.showShort(getContext(), "暂未开通");
                 if(!SpUtils.getLanyaTime(getContext())){
                     if (turnOnBluetooth()) {
-                        Toast tst = Toast.makeText(getContext(), "打开蓝牙成功", Toast.LENGTH_SHORT);
-                        tst.show();
+//                        Toast tst = Toast.makeText(getContext(), "打开蓝牙成功", Toast.LENGTH_SHORT);
+//                        tst.show();
                         PermissionManager.instance().request(getActivity(), new OnPermissionCallback() {
                             @Override
                             public void onRequestAllow(String permissionName) {
@@ -258,8 +260,9 @@ public class Fragment1 extends BaseFragment {
                             }
                         }, Manifest.permission.ACCESS_FINE_LOCATION);
                     } else {
-                        Toast tst = Toast.makeText(getContext(), "打开蓝牙失败！！", Toast.LENGTH_SHORT);
+                        Toast tst = Toast.makeText(getContext(), "请打开手机蓝牙", Toast.LENGTH_SHORT);
                         tst.show();
+                        onBluetooth();
                     }
                 }else {
                     intent.setClass(getContext(), LayaControlActivity.class);
@@ -273,17 +276,26 @@ public class Fragment1 extends BaseFragment {
         }
     }
 
+    private void onBluetooth(){
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter
+                .getDefaultAdapter();
+        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
+
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+    }
+
     /**
-     * 强制开启当前 Android 设备的 Bluetooth
-     *
-     * @return true：强制打开 Bluetooth　成功　false：强制打开 Bluetooth 失败
+     * 判断蓝牙是否开启
      */
-    public static boolean turnOnBluetooth() {
+    private boolean turnOnBluetooth() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter
                 .getDefaultAdapter();
 
         if (bluetoothAdapter != null) {
-            return bluetoothAdapter.enable();
+            return bluetoothAdapter.isEnabled();
         }
 
         return false;

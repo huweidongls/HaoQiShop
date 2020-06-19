@@ -6,9 +6,10 @@ android {
         applicationId "com.jingna.artworkmall"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 20
-        versionName "1.0.20"
+        versionCode 24
+        versionName "1.0.24"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -70,4 +71,5 @@ dependencies {
     implementation 'com.github.SheHuan:NiceImageView:1.0.5'
     implementation files('libs/BaiduLBS_Android.jar')
     compile 'com.contrarywind:Android-PickerView:4.1.9'
+    implementation 'com.github.xuexiangjys:XUpdate:1.1.6'
 }

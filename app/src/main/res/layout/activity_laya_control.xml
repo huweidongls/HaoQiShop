@@ -143,6 +143,7 @@
         android:layout_height="45dp" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_pause"
         android:background="@drawable/bg_23c1c7_3dp"
         android:textColor="@color/white_ffffff"

@@ -13,6 +13,7 @@ import com.jingna.artworkmall.util.RegisterTimeCount;
 import com.jingna.artworkmall.util.SpUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.vise.xsnow.http.ViseHttp;
+import com.xuexiang.xupdate.XUpdate;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -40,6 +41,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        XUpdate.get().init(this);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.

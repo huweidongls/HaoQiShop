@@ -172,7 +172,7 @@ public class LayaControlActivity extends BaseActivity {
                 if(isPause){
                     top();
                 }else {
-                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 250);
@@ -182,7 +182,7 @@ public class LayaControlActivity extends BaseActivity {
                 if(isPause){
                     top();
                 }else {
-                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -192,7 +192,7 @@ public class LayaControlActivity extends BaseActivity {
                 if(isPause){
                     bottom();
                 }else {
-                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 250);
@@ -202,7 +202,7 @@ public class LayaControlActivity extends BaseActivity {
                 if(isPause){
                     bottom();
                 }else {
-                    Toast.makeText(context, "请暂停之后使用此功能", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "设备运行中，无法使用此功能", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -512,7 +512,7 @@ public class LayaControlActivity extends BaseActivity {
                         if(isFirst){
                             Toast.makeText(this, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                         }else {
-                            DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务", new DialogCustom.OnYesListener() {
+                            DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务，开始服务则不能调节设备的理疗位置", new DialogCustom.OnYesListener() {
                                 @Override
                                 public void onYes() {
                                     startService();
@@ -587,7 +587,8 @@ public class LayaControlActivity extends BaseActivity {
      * 蓝牙开始连接
      */
     private void start(){
-        byte buff[] = {(byte) 0xDF, 0x11, 0x0E, 0x10, (byte) 0xFD};
+//        byte buff[] = {(byte) 0xDF, 0x11, 0x0E, 0x10, (byte) 0xFD};//一小时
+        byte buff[] = {(byte) 0xDF, 0x11, 0x02, 0x58, (byte) 0xFD};//2分钟
         target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
         //调用蓝牙服务的写特征值方法实现发送数据
         mBluetoothLeService.writeCharacteristic(target_chara);
