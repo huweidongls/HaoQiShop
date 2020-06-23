@@ -147,20 +147,20 @@ public class LayaControlActivity extends BaseActivity {
         code = b.getString("code");
         qyId = b.getString("qyid");
 
-        DialogCustom dialogCustom = new DialogCustom(context, "连接后即扣除次数，是否连接", new DialogCustom.OnYesListener() {
-            @Override
-            public void onYes() {
+//        DialogCustom dialogCustom = new DialogCustom(context, "连接后即扣除次数，是否连接", new DialogCustom.OnYesListener() {
+//            @Override
+//            public void onYes() {
                 /* 启动蓝牙service */
                 Intent gattServiceIntent = new Intent(LayaControlActivity.this, BluetoothLeService.class);
                 bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-            }
-
-            @Override
-            public void onCancel() {
-                LayaControlActivity.this.finish();
-            }
-        });
-        dialogCustom.show();
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                LayaControlActivity.this.finish();
+//            }
+//        });
+//        dialogCustom.show();
 
     }
 
@@ -438,16 +438,13 @@ public class LayaControlActivity extends BaseActivity {
                             gattCharacteristic, true);
                     target_chara = gattCharacteristic;
                     if(isFirst){
-                        Map<String, String> map = new LinkedHashMap<>();
-                        map.put("memberId", SpUtils.getUserId(context));
-                        map.put("sbCode", code);
-                        map.put("qyId", qyId);
-                        ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
+                        Timer timer = new Timer();
+                        timer.schedule(new TimerTask() {
                             @Override
-                            public void onReturn(String s) {
+                            public void run() {
                                 start();
                             }
-                        });
+                        }, 500);
                     }
                     // 设置数据内容
                     // 往蓝牙模块写入数据
@@ -472,6 +469,24 @@ public class LayaControlActivity extends BaseActivity {
             gattCharacteristicData.add(gattCharacteristicGroupData);
 
         }
+
+    }
+
+    /**
+     * 扣次
+     */
+    private void kouci(){
+
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("memberId", SpUtils.getUserId(context));
+        map.put("sbCode", code);
+        map.put("qyId", qyId);
+        ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
+            @Override
+            public void onReturn(String s) {
+
+            }
+        });
 
     }
 
@@ -528,12 +543,13 @@ public class LayaControlActivity extends BaseActivity {
                         if(isFirst){
                             Toast.makeText(this, "暂未与设备建立连接", Toast.LENGTH_SHORT).show();
                         }else {
-                            DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务，开始服务则不能调节设备的理疗位置", new DialogCustom.OnYesListener() {
+                            DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务？开始服务即扣除次数并且不能调节设备的理疗位置。", new DialogCustom.OnYesListener() {
                                 @Override
                                 public void onYes() {
                                     startService();
                                     isStart = true;
                                     isPause = false;
+                                    kouci();
                                     btnStart.setEnabled(false);
                                 }
 
@@ -604,7 +620,7 @@ public class LayaControlActivity extends BaseActivity {
      */
     private void start(){
 //        byte buff[] = {(byte) 0xDF, 0x11, 0x0E, 0x10, (byte) 0xFD};//一小时
-        byte buff[] = {(byte) 0xDF, 0x11, 0x02, 0x58, (byte) 0xFD};//2分钟
+        byte buff[] = {(byte) 0xDF, 0x11, 0x02, 0x58, (byte) 0xFD};//10分钟
         target_chara.setValue(buff);//只能一次发送20字节，所以这里要分包发送
         //调用蓝牙服务的写特征值方法实现发送数据
         mBluetoothLeService.writeCharacteristic(target_chara);
