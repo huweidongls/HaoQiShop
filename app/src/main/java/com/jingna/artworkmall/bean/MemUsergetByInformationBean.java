@@ -51,7 +51,7 @@ public class MemUsergetByInformationBean {
         private int id;
         private String memName;
         private String headPhoto;
-        private int memIntegral;
+        private double memIntegral;
         private int couponNum;
         private int isSignIn;
         private int sfStatus;
@@ -85,11 +85,11 @@ public class MemUsergetByInformationBean {
             this.headPhoto = headPhoto;
         }
 
-        public int getMemIntegral() {
+        public double getMemIntegral() {
             return memIntegral;
         }
 
-        public void setMemIntegral(int memIntegral) {
+        public void setMemIntegral(double memIntegral) {
             this.memIntegral = memIntegral;
         }
 
