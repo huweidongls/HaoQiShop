@@ -155,6 +155,7 @@ public class Fragment5 extends BaseFragment {
                 break;
             case R.id.rl_quanyi:
                 intent.setClass(getContext(), HuiyuanQuanyiActivity.class);
+                intent.putExtra("type", "1");
                 startActivity(intent);
                 break;
             case R.id.rl_yuyue:
