@@ -15,6 +15,8 @@ import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.bean.AddressListBean;
 import com.jingna.artworkmall.bean.AppGoodsShopgetByTjkBean;
 import com.jingna.artworkmall.bean.MarketingCouponUserfindByCouponsBean;
+import com.jingna.artworkmall.bean.MemUsergetOneBean;
+import com.jingna.artworkmall.dialog.DialogCustom;
 import com.jingna.artworkmall.dialog.DialogZhifu;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.util.GlideUtils;
@@ -216,18 +218,44 @@ public class TijianSureActivity extends BaseActivity {
                 if((allPrice-couponsPrice)>yue){
                     ToastUtil.showShort(context, "余额不足");
                 }else {
-                    DialogZhifu dialogZhifu = new DialogZhifu(context, yue, new DialogZhifu.ClickListener() {
+                    Map<String, String> map = new LinkedHashMap<>();
+                    map.put("id", SpUtils.getUserId(context));
+                    ViseUtil.Get(context, NetUrl.MemUsergetOne, map, new ViseUtil.ViseListener() {
                         @Override
-                        public void onYes() {
-                            tijiao();
-                        }
+                        public void onReturn(String s) {
+                            Gson gson = new Gson();
+                            MemUsergetOneBean bean = gson.fromJson(s, MemUsergetOneBean.class);
+                            if(bean.getData().getMemberUserInfo().getPayPassword()==null){
+                                DialogCustom dialogCustom = new DialogCustom(context, "暂无支付密码，是否去设置？", new DialogCustom.OnYesListener() {
+                                    @Override
+                                    public void onYes() {
+                                        Intent intent1 = new Intent();
+                                        intent1.setClass(context, PersonInformationActivity.class);
+                                        startActivity(intent1);
+                                    }
 
-                        @Override
-                        public void onNo() {
+                                    @Override
+                                    public void onCancel() {
 
+                                    }
+                                });
+                                dialogCustom.show();
+                            }else {
+                                DialogZhifu dialogZhifu = new DialogZhifu(context, yue, new DialogZhifu.ClickListener() {
+                                    @Override
+                                    public void onYes() {
+                                        tijiao();
+                                    }
+
+                                    @Override
+                                    public void onNo() {
+
+                                    }
+                                });
+                                dialogZhifu.show();
+                            }
                         }
                     });
-                    dialogZhifu.show();
                 }
                 break;
         }

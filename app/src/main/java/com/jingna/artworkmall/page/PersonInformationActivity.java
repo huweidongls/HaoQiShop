@@ -18,10 +18,12 @@ import com.jingna.artworkmall.R;
 import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.bean.MemUsergetOneBean;
 import com.jingna.artworkmall.dialog.DialogCustom;
+import com.jingna.artworkmall.dialog.DialogZfPwd;
 import com.jingna.artworkmall.dialog.InformationNicknameDialog;
 import com.jingna.artworkmall.dialog.InformationSexDialog;
 import com.jingna.artworkmall.net.NetUrl;
 import com.jingna.artworkmall.util.GlideUtils;
+import com.jingna.artworkmall.util.Logger;
 import com.jingna.artworkmall.util.SpUtils;
 import com.jingna.artworkmall.util.StatusBarUtil;
 import com.jingna.artworkmall.util.StringUtils;
@@ -116,10 +118,14 @@ public class PersonInformationActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.rl_back, R.id.rl_avatar, R.id.rl_birthday, R.id.rl_sex, R.id.rl_nickname, R.id.btn_out, R.id.rl_yqm})
+    @OnClick({R.id.rl_back, R.id.rl_avatar, R.id.rl_birthday, R.id.rl_sex, R.id.rl_nickname, R.id.btn_out, R.id.rl_yqm,
+    R.id.rl_zf_pwd})
     public void onClick(View view){
         Intent intent = new Intent();
         switch (view.getId()){
+            case R.id.rl_zf_pwd:
+                setZfPwd();
+                break;
             case R.id.rl_back:
                 finish();
                 break;
@@ -183,6 +189,29 @@ public class PersonInformationActivity extends BaseActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * 设置支付密码
+     */
+    private void setZfPwd() {
+
+        DialogZfPwd dialogZfPwd = new DialogZfPwd(context, new DialogZfPwd.ClickListener() {
+            @Override
+            public void onSure(String pwd) {
+                Map<String, String> map = new LinkedHashMap<>();
+                map.put("id", SpUtils.getUserId(context));
+                map.put("payPassword", pwd);
+                ViseUtil.Post(context, NetUrl.MemUsertoUpdate, map, new ViseUtil.ViseListener() {
+                    @Override
+                    public void onReturn(String s) {
+                        ToastUtil.showShort(context, "设置成功");
+                    }
+                });
+            }
+        });
+        dialogZfPwd.show();
+
     }
 
     /**

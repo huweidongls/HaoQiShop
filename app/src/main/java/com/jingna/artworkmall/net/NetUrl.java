@@ -6,8 +6,8 @@ package com.jingna.artworkmall.net;
 
 public class NetUrl {
 
-//    public static final String BASE_URL = "http://192.168.1.102:80/";//http://192.168.2.211:8080/
-//    public static final String BASE_URL = "http://192.168.1.166:8080/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://192.168.1.117:9999/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://192.168.1.166:80/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
     public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
     public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/

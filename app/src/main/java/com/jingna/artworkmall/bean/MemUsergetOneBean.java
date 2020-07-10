@@ -116,6 +116,15 @@ public class MemUsergetOneBean {
             private List<?> platformBalances;
             private List<?> verificationSheetRecords;
             private String loginUrl;
+            private String payPassword;
+
+            public String getPayPassword() {
+                return payPassword;
+            }
+
+            public void setPayPassword(String payPassword) {
+                this.payPassword = payPassword;
+            }
 
             public String getLoginUrl() {
                 return loginUrl;

@@ -484,7 +484,7 @@ public class LayaControlActivity extends BaseActivity {
         ViseUtil.Get(context, NetUrl.AppSaoMasaoMa, map, new ViseUtil.ViseListener() {
             @Override
             public void onReturn(String s) {
-
+                startService();
             }
         });
 
@@ -546,7 +546,6 @@ public class LayaControlActivity extends BaseActivity {
                             DialogCustom dialogCustom = new DialogCustom(context, "是否开始服务？开始服务即扣除次数并且不能调节设备的理疗位置。", new DialogCustom.OnYesListener() {
                                 @Override
                                 public void onYes() {
-                                    startService();
                                     isStart = true;
                                     isPause = false;
                                     kouci();
