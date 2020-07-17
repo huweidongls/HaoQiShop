@@ -27,6 +27,7 @@ import java.util.Map;
 public class MyApplication extends Application {
 
     private static MyApplication instance;
+    public static final int TIME_OUT = 600;
     private List<Activity> mList = new LinkedList<Activity>();
     // 修改密码获取验证码倒计时
     public static BankCodeTimeCount bankCodeTimeCount;
@@ -52,6 +53,9 @@ public class MyApplication extends Application {
         map.put("fxToken", SpUtils.getToken(getApplicationContext()));
         ViseHttp.init(this);
         ViseHttp.CONFIG().baseUrl(NetUrl.BASE_URL)
+                .readTimeout(MyApplication.TIME_OUT)
+                .writeTimeout(MyApplication.TIME_OUT)
+                .connectTimeout(MyApplication.TIME_OUT)
                 .globalHeaders(map);
         ZXingLibrary.initDisplayOpinion(this);
         bankCodeTimeCount = new BankCodeTimeCount(60000, 1000);

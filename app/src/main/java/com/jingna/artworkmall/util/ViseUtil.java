@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 
+import com.jingna.artworkmall.app.MyApplication;
 import com.jingna.artworkmall.page.PhoneLoginActivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.vise.xsnow.http.ViseHttp;
@@ -100,6 +101,9 @@ public class ViseUtil {
 
         ViseHttp.GET(url)
                 .addParams(map)
+                .readTimeOut(MyApplication.TIME_OUT)
+                .writeTimeOut(MyApplication.TIME_OUT)
+                .connectTimeOut(MyApplication.TIME_OUT)
                 .request(new ACallback<String>() {
                     @Override
                     public void onSuccess(String data) {
@@ -124,6 +128,7 @@ public class ViseUtil {
 
                     @Override
                     public void onFail(int errCode, String errMsg) {
+                        Logger.e("123123", "errCode--"+errCode+"--errMsg--"+errMsg);
                         ToastUtil.showShort(context, "网络异常");
                         WeiboDialogUtils.closeDialog(dialog);
                     }

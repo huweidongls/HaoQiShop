@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.jingna.artworkmall.R;
+import com.jingna.artworkmall.app.MyApplication;
 import com.jingna.artworkmall.base.BaseActivity;
 import com.jingna.artworkmall.bean.LoginBean;
 import com.jingna.artworkmall.net.NetUrl;
@@ -103,6 +104,9 @@ public class Register2Activity extends BaseActivity {
                     Map<String, String> map = new LinkedHashMap<>();
                     map.put("fxToken", bean.getData().getToken());
                     ViseHttp.CONFIG().baseUrl(NetUrl.BASE_URL)
+                            .readTimeout(MyApplication.TIME_OUT)
+                            .writeTimeout(MyApplication.TIME_OUT)
+                            .connectTimeout(MyApplication.TIME_OUT)
                             .globalHeaders(map);
                     Intent intent = new Intent();
                     intent.setClass(context, MainActivity.class);

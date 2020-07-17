@@ -147,6 +147,9 @@ public class LoginActivity extends BaseActivity {
                         Map<String, String> map = new LinkedHashMap<>();
                         map.put("fxToken", bean.getData().getToken());
                         ViseHttp.CONFIG().baseUrl(NetUrl.BASE_URL)
+                                .readTimeout(MyApplication.TIME_OUT)
+                                .writeTimeout(MyApplication.TIME_OUT)
+                                .connectTimeout(MyApplication.TIME_OUT)
                                 .globalHeaders(map);
                         Intent intent = new Intent();
                         intent.setClass(context, MainActivity.class);

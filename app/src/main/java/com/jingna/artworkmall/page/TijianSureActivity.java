@@ -120,6 +120,7 @@ public class TijianSureActivity extends BaseActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(s);
                     yue = jsonObject.optDouble("data");
+                    Logger.e("123123", yue+"");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -275,6 +276,8 @@ public class TijianSureActivity extends BaseActivity {
             if(!StringUtils.isEmpty(couponsId)){
                 map.put("couponId", couponsId);
             }
+            Logger.e("123123", "member--"+SpUtils.getUserId(context)+"--addressId--"+addressId+"--goodsId--"+id
+            +"--num--"+goodsNum);
             ViseUtil.Get(context, NetUrl.AppOrderordersSubmitted, map, dialog, new ViseUtil.ViseListener() {
                 @Override
                 public void onReturn(String s) {
