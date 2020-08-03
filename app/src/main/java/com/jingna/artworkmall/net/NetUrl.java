@@ -9,7 +9,8 @@ public class NetUrl {
 //    public static final String BASE_URL = "http://192.168.1.117:9999/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://192.168.1.166:80/";//http://192.168.2.211:8080/
 //    public static final String BASE_URL = "http://slsapi.5ijiaoyu.cn/";//http://192.168.2.211:8080/
-    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+//    public static final String BASE_URL = "http://122.112.187.234:8998/";//http://192.168.2.211:8080/
+    public static final String BASE_URL = "http://haoqiapi.5ijiaoyu.cn:8998/";//http://192.168.2.211:8080/
     public static final String H5BASE_URL = "http://haoqih5.5ijiaoyu.cn";//http://192.168.2.211:8080/
 //    public static final String H5BASE_URL = "http://slsh5.5ijiaoyu.cn";//http://192.168.2.211:8080/
     public static final String MemUsersendMessage = "/MemUser/sendMessage";//发送验证码
